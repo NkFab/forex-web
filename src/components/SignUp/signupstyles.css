@@ -1,0 +1,22 @@
+.signup{
+    height: 100vh;
+    background: #40926d;
+    margin-top: 0%;
+    overflow: hidden;
+    /* align-items: center; */
+}
+.card{
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 10%;
+    padding: 5%;
+}
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+.btn{
+    float: left;
+}
