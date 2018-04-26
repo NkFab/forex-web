@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Home from './components/Home/home'
 import Login from './components/Login/login'
 import SignUp from './components/SignUp/signup'
+import Dashboard from './components/Dashboard/screen/Dashboard'
 import { createMuiTheme } from 'material-ui/styles';
 
 class App extends Component {
@@ -33,6 +34,7 @@ class App extends Component {
             <Route exact path="/" component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={SignUp} />
+            <Route path="/dashboard" component={Dashboard} />
           </div>
         </Router>
       </MuiThemeProvider>
