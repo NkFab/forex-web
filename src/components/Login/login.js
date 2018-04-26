@@ -23,8 +23,16 @@ class Login extends Component {
       }
       handleLogin = async () => {
         const {email,password} = this.state
-        await this.props.LoginUserMutation({variables: {email,password}})
-        this.props.history.replace('/')
+        let response
+        try{
+            response =  await this.props.LoginUserMutation({variables: {email,password}})
+            this.props.history.replace('/')
+            console.log(response)
+        }
+       catch(err){
+        console.log(err)
+        alert('error occured')
+       }
 
       }
     render() {
