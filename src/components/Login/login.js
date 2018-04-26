@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link,withRouter } from 'react-router-dom'
 import { ReactDOM } from 'react-dom';
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
 import {
     AppBar,
     Toolbar,
@@ -15,6 +17,16 @@ import {
 import './loginstyles.css'
 
 class Login extends Component {
+    state = {
+        email: '',
+        password:'',
+      }
+      handleLogin = async () => {
+        const {email,password} = this.state
+        await this.props.LoginUserMutation({variables: {email,password}})
+        this.props.history.replace('/')
+
+      }
     render() {
         return (
             <div>
@@ -35,16 +47,17 @@ class Login extends Component {
                                 <form noValidate autoComplete="off">
                                     <TextField
                                         id="with-placeholder"
-                                        label="Username or Email"
-                                        placeholder="Username or Email"
-                                        // className={classes.textField}
-                                        // margin="normal"
+                                        label="Company Name or Email"
+                                        placeholder="Company Name or Email"
+                                        value={this.state.email}
+                                        onChange={e => this.setState({email: e.target.value})}
                                     />
                                     <br />
                                     <TextField
                                         id="password-input"
                                         label="Password"
-                                        // className={classes.textField}
+                                        value={this.state.password}
+                                        onChange={e => this.setState({password: e.target.value})}
                                         type="password"
                                         autoComplete="current-password"
                                         // margin="normal"
@@ -52,7 +65,7 @@ class Login extends Component {
                                 </form>
                             </CardContent>
                             <CardActions>
-                                <Button onClick={() => {alert('clicked')}} size="small" variant="raised" color="primary">Login</Button>
+                                <Button onClick={this.handleLogin} size="small" variant="raised" color="primary">Login</Button>
                             </CardActions>
                         </Card>
                     </div>
@@ -61,4 +74,16 @@ class Login extends Component {
         )
     }
 }
-export default Login;
+const loginMutation = gql`
+  mutation LoginUserMutation($email: String!, $password: String!) {
+    signinUser(email: { email:$email, password: $password }){
+      user{
+        id
+        email
+      }
+      token
+    }
+  }
+`;
+const LoginPageWithMutation = graphql(loginMutation, {name: 'LoginUserMutation'})(Login)
+export default withRouter(LoginPageWithMutation)
