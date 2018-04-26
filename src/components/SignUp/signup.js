@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link,withRouter} from 'react-router-dom'
 import { ReactDOM } from 'react-dom';
+
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
 import {
     AppBar,
     Toolbar,
@@ -15,6 +18,24 @@ import {
 import './signupstyles.css'
 
 class SignUp extends Component {
+    state = {
+        email: '',
+        phone:'',
+        companyName:'',
+        password:'',
+        address:'',
+        opening: '',
+        closing:''
+        
+      }
+      handleSignup = async () => {
+        const {email,phone,companyName,password,address,opening,closing} = this.state
+        console.log(email)
+        await this.props.CreateUserMutation({variables: {email,phone,companyName,password,address,opening,closing}})
+        this.props.history.replace('/')
+
+      }
+      
     render() {
         return (
             <div>
@@ -38,8 +59,8 @@ class SignUp extends Component {
                                             id="with-placeholder"
                                             label="Email"
                                             placeholder="Email"
-                                        // className={classes.textField}
-                                        // margin="normal"
+                                            value={this.state.email}
+                                            onChange={e => this.setState({email: e.target.value})}
                                         />
                                         <br />
                                         <TextField
@@ -47,15 +68,27 @@ class SignUp extends Component {
                                             label="Password"
                                             placeholder="Password"
                                             type="password"
-                                        // className={classes.textField}
-                                        // margin="normal"
+                                            value={this.state.password}
+                                            onChange={e => this.setState({password: e.target.value})}
                                         />
                                         <br />
                                         <TextField
                                             id="with-placeholder"
                                             label="Address"
-                                            // className={classes.textField}
+                                            value={this.state.address}
+                                            onChange={e => this.setState({address: e.target.value})}
                                             placeholder="eg. kg # st, avenue"
+                                        // margin="normal"
+                                        />
+                                         <br />
+                                        <TextField
+                                            id="password-input"
+                                            label="Phone number"
+                                            value={this.state.phone}
+                                            onChange={e => this.setState({phone: e.target.value})}
+                                            // className={classes.textField}
+                                            placeholder="Phone number"
+                                        // autoComplete="current-password"
                                         // margin="normal"
                                         />
                                     </div>
@@ -64,30 +97,27 @@ class SignUp extends Component {
                                             id="with-placeholder"
                                             label="Company name"
                                             placeholder="Company name"
-                                        // className={classes.textField}
-                                        // margin="normal"
+                                            value={this.state.companyName}
+                                            onChange={e => this.setState({companyName: e.target.value})}
                                         />
                                         <br />
                                         <TextField
                                             id="password"
-                                            label="Confirm password"
-                                            type="password"
-                                        // className={classes.textField}
-                                        // margin="normal"
+                                            label="Opening Hours"
+                                            value={this.state.opening}
+                                            onChange={e => this.setState({opening: e.target.value})}
                                         />
-                                        <br />
+                                         <br />
                                         <TextField
-                                            id="password-input"
-                                            label="Phone number"
-                                            // className={classes.textField}
-                                            placeholder="Phone number"
-                                        // autoComplete="current-password"
-                                        // margin="normal"
+                                            id="password"
+                                            label="Closing Hours"
+                                            value={this.state.closing}
+                                            onChange={e => this.setState({closing: e.target.value})}
                                         />
                                           <br />
                                         <br />
                                         <CardActions>
-                                            <Button href={() => alert('clicked')} size="small" variant="raised" color="primary">Sign Up</Button>
+                                            <Button onClick={this.handleSignup} size="small" variant="raised" color="primary">Sign Up</Button>
                                         </CardActions>
                                     </div>
                                 </form>
@@ -99,4 +129,21 @@ class SignUp extends Component {
         )
     }
 }
-export default SignUp;
+
+const signUpMutation = gql`
+mutation CreateUserMutation($companyName: String!,$address: String!,$opening: String!,$closing: String!,$phone: String!, $email: String!, $password: String!) {
+    createUser(companyName: $companyName,address: $address,openingHour:$opening,closingHour: $closing,phoneNumber: $phone,authProvider: { email: { email:$email, password:$password } }){
+        id
+        companyName
+        email
+        password
+        address
+        phoneNumber
+        openingHour
+        closingHour
+      }
+  }
+`;
+
+const CreatePageWithMutation = graphql(signUpMutation, {name: 'CreateUserMutation'})(SignUp)
+export default withRouter(CreatePageWithMutation)
