@@ -23,7 +23,7 @@ class Home extends Component {
                             <Link to="login" style={{ textDecoration: 'none' }}>
                                 <Button color="secondary">LOGIN</Button>
                             </Link>
-                            <Link to="dashboard" style={{ textDecoration: 'none' }}>
+                            <Link to="signup" style={{ textDecoration: 'none' }}>
                                 <Button color="secondary">SIGN UP</Button>
                             </Link>
                         </div>
