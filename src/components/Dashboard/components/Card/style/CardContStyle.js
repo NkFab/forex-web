@@ -2,11 +2,11 @@ const ScreenHeight= window.innerHeight
 const ScreenWidth= window.innerWidth
 const styles = theme => ({
     container: {
-        display: 'flex',
+        // display: 'flex',
         flexDirection: 'row wrap',
         // padding: 20,
-        width: '100%',
-        backgroundColor: '#E5E8E8'
+        // width: '100%',
+        // backgroundColor: '#E5E8E8'
     },
     wrapper:{
         // display: 'flex',
@@ -14,23 +14,12 @@ const styles = theme => ({
     },
     content:{
         display: 'flex',
-        alignItems: 'center',
+        // alignItems: 'center',
+        // justifyContent: 'center',
         // flexGrow: 1,
-        marginTop: 20,
-        marginLeft: ScreenWidth/8.5,
+        // marginTop: 20,
+        // marginLeft: ScreenWidth/8.5,
         // marginLeft: 5,
-    },
-    category: {
-        marginTop: 100
-        // flexDirection: 'column'
-    },
-    categoryTitle:{
-        marginTop: 50
-    },
-    cardContainer:{
-        // flexDirection: 'row',
-        marginTop: 100,
-        marginLeft: 50,
     },
     currency:{
         // backgroundColor: 'grey',
@@ -44,7 +33,7 @@ const styles = theme => ({
     },
     grid:{
         overflow: 'hidden',
-        margin: theme.spacing.unit,
+        // margin: theme.spacing.unit,
         padding: theme.spacing.unit * 2,
         color: '#006442', 
         fontWeight: 'bold', 
@@ -52,14 +41,15 @@ const styles = theme => ({
         fontSize: 20, 
         backgroundColor: 'transparent'
     },
-    titleCont:{
-        marginTop: 80,
-        marginLeft: -1080,
-    },
+    // titleCont:{
+    //     marginTop: 80,
+    //     marginLeft: -1080,
+    // },
     title:{
-        fontSize: 20,
-        color:'#006442',
-        fontWeight: 'bold',
+        color: '#006442', 
+        fontWeight: 'bold', 
+        marginBottom: 20, 
+        fontSize: 20, 
     },
     menuItem: {
         marginTop: -8,
@@ -83,7 +73,18 @@ const styles = theme => ({
         borderColor: '#006442',
     },
     currencytitle:{
-
+        fontWeight: 'bold',
+        color: theme.palette.primary.main,
+        fontSize: 18,
+        // justifyContent: 'flex-start'
+        marginRight: ScreenWidth /50
+    },
+    currencyrate:{
+        fontWeight: 'bold',
+        color: theme.palette.primary.main,
+        fontSize: 18,
+        marginLeft: ScreenWidth /10,
+        // marginRight: -100
     },
     currencyContent:{
         display: 'flex',
@@ -92,12 +93,22 @@ const styles = theme => ({
         height: 70,
         backgroundColor:'white',
         color:'black',
-        textAlign: 'center', 
-        paddingLeft: 20
+        textAlign: 'center',
+        alignItems: 'center',
+        justifyContent: 'center'
+        // paddingLeft: 100
     },
-    // control: {
-    //   padding: theme.spacing.unit * 2,
-    // },
+    button:{
+        backgroundColor: theme.palette.primary.main,
+        color: 'white',
+        fontWeight: 'bold',
+        borderRadius: 5,
+        width: ScreenWidth/10,
+        height: ScreenHeight /15,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginLeft: ScreenWidth /10
+    }
   });
   
 

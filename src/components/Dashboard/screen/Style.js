@@ -9,7 +9,10 @@ const styles = theme => ({
         backgroundColor: '#E5E8E8'
     },
     wrapper:{
-        // display: 'flex',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
         // marginTop: 100
     },
     content:{

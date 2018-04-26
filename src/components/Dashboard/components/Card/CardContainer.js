@@ -19,25 +19,32 @@ class CardContainer extends React.Component {
         const { classes, title, currency, rate, buttonTxt, onClick } = this.props;
 
         return(
-            <Paper 
-                elevation ={0} 
-                className={classes.grid}>
-                {title}
+            // <Paper 
+            //     elevation ={0} 
+            //     className={classes.grid}>
+            //     {title}
               <Grid 
                   container 
                   className={classes.content} 
-                  justify="space-around" 
-                  alignContent="center" 
+                  justify="center" 
+                  alignItems="center"
+                  alignContent="stretch" 
                   spacing={16}
-                  wrap="wrap">
+                  direction="column"
+                  xs= {10}
+                  // wrap="wrap"
+                  >
+                  <Typography className={classes.title} >{title}</Typography>
+                  
               {[0, 1, 2].map(value => (
-                <Grid key={value} item xs={12}>
+                <Grid key={value} item >
+                  
                   <Paper
                       elevation={5}
                       rounded= {false}
                       className={classes.currencyContent}>
                     <Typography className={classes.currencytitle} >{currency}</Typography>
-                    <Typography>{rate}</Typography>
+                    <Typography className={classes.currencyrate}>{rate}</Typography>
                     <Button className={classes.button} onClick={onClick}>
                       <SvgIcon 
                           style={{color: 'white', fontSize: 40, marginRight: 20}}>
@@ -49,7 +56,7 @@ class CardContainer extends React.Component {
                 </Grid>
               ))}
               </Grid>
-            </Paper>
+            // </Paper>
         )
     }
 }

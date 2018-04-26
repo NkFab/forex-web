@@ -5,9 +5,11 @@ const ScreenWidth= window.innerWidth
 
 const styles = theme => ({
     container: {
+        display: 'flex',
+        flexDirection: 'column',
         overflow: 'hidden',
         height: ScreenHeight,
-        width: ScreenWidth/2.2,
+        width: ScreenWidth/4.5,
         backgroundColor: '#008b5c',
         color:'white',
         justify: 'center',

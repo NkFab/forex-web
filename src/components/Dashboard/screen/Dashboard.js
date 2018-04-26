@@ -73,14 +73,14 @@ class Dashboard extends React.Component {
 
           <CardContainer 
               title="Buy" 
-              Currency="USD"
+              currency="USD"
               rate="892" 
               buttonTxt="Update" 
               onClick={this.handleClickOpenUpdate}/>
 
           <CardContainer 
               title="Sell" 
-              Currency="USD"
+              currency="USD"
               rate="898" 
               buttonTxt="Update" 
               onClick={this.handleClickOpenUpdate}/>    
