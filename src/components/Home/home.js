@@ -1,85 +1,31 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { ReactDOM } from 'react-dom';
 import {
     AppBar,
     Toolbar,
     Typography,
     Button,
-    IconButton,
-    Menu,
-    MenuItem
+    Paper
 } from 'material-ui'
 import './homestyles.css'
-import MenuIcon from '@material-ui/icons/Menu';
-import { PermIdentity } from '@material-ui/icons';
 
 class Home extends Component {
-    state = {
-        auth: true,
-        anchorEl: null,
-    };
-
-    handleChange = (event, checked) => {
-        this.setState({ auth: checked });
-    };
-
-    handleMenu = event => {
-        this.setState({ anchorEl: event.currentTarget });
-    };
-
     render() {
-        const { auth, anchorEl } = this.state;
-        const open = Boolean(anchorEl);
         return (
-            <div className="root">
+            <div>
                 <AppBar position="fixed" color="primary" elevation="none">
                     <Toolbar>
-                        <Typography variant="title" color="inherit" className="flex">
+                        <Typography variant="title" color="inherit">
                             forext
                         </Typography>
-                        <div>
-                            {/* <Link to="login" style={{ textDecoration: 'none' }}>
+                        <div className="menu">
+                            <Link to="login" style={{ textDecoration: 'none' }}>
                                 <Button color="secondary">LOGIN</Button>
                             </Link>
-                            <Link to="signup" style={{ textDecoration: 'none' }}>
+                            <Link to="dashboard" style={{ textDecoration: 'none' }}>
                                 <Button color="secondary">SIGN UP</Button>
-                            </Link> */}
-                            {auth && (
-                                <div>
-                                    <IconButton
-                                        aria-owns={open ? 'menu-appbar' : null}
-                                        aria-haspopup="true"
-                                        onClick={this.handleMenu}
-                                        color="inherit"
-                                    >
-                                        <PermIdentity />
-                                    </IconButton>
-                                    <Menu
-                                        id="menu-appbar"
-                                        anchorEl={anchorEl}
-                                        anchorOrigin={{
-                                            vertical: 'top',
-                                            horizontal: 'right',
-                                        }}
-                                        transformOrigin={{
-                                            vertical: 'top',
-                                            horizontal: 'right',
-                                        }}
-                                        open={open}
-                                        onClose={this.handleClose}
-                                    >
-                                        <Link to="login" style={{ textDecoration: 'none' }}>
-                                            <MenuItem>Login</MenuItem>
-                                        </Link>
-                                        <Link to="signup" style={{ textDecoration: 'none' }}>
-                                            <MenuItem>Sign up</MenuItem>
-                                        </Link>
-                                    </Menu>
-                                    <IconButton color="inherit">
-                                        <MenuIcon />
-                                    </IconButton>
-                                </div>
-                            )}
+                            </Link>
                         </div>
                     </Toolbar>
                 </AppBar>
