@@ -29,6 +29,8 @@ class SignUp extends Component {
                                 <Typography variant="headline" component="h2">
                                     SIGN UP
                                 </Typography>
+                                <br />
+                                <br />
                                 <form noValidate autoComplete="off">
                                     <div className="left">
                                         <TextField
@@ -39,6 +41,7 @@ class SignUp extends Component {
                                         // margin="normal"
                                         />
                                         <br />
+                                        <br />
                                         <TextField
                                             id="password-input"
                                             label="Password"
@@ -48,6 +51,7 @@ class SignUp extends Component {
                                         // margin="normal"
                                         />
                                         <br />
+                                        <br />
                                         <TextField
                                             id="with-placeholder"
                                             label="Address"
@@ -55,11 +59,6 @@ class SignUp extends Component {
                                             placeholder="eg. kg # st, avenue"
                                         // margin="normal"
                                         />
-                                        <br />
-                                        <br />
-                                        <CardActions>
-                                            <Button href={() => alert('clicked')} size="small" variant="raised" color="primary">Sign Up</Button>
-                                        </CardActions>
                                     </div>
                                     <div className="right">
                                         <TextField
@@ -70,6 +69,7 @@ class SignUp extends Component {
                                         // margin="normal"
                                         />
                                         <br />
+                                        <br />
                                         <TextField
                                             id="password"
                                             label="Confirm password"
@@ -77,6 +77,7 @@ class SignUp extends Component {
                                         // className={classes.textField}
                                         // margin="normal"
                                         />
+                                        <br />
                                         <br />
                                         <TextField
                                             id="password-input"
@@ -86,6 +87,11 @@ class SignUp extends Component {
                                         // autoComplete="current-password"
                                         // margin="normal"
                                         />
+                                        <br />
+                                        <br />
+                                        <CardActions>
+                                            <Button fullWidth href={() => alert('clicked')} size="small" variant="raised" color="primary">Sign Up</Button>
+                                        </CardActions>
                                     </div>
                                     <div className="btn">
                                         
