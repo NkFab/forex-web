@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import { ReactDOM } from 'react-dom';
 import {
     AppBar,
     Toolbar,
@@ -9,8 +7,7 @@ import {
     Card,
     CardContent,
     CardActions,
-    TextField,
-    RaisedButton
+    TextField
 } from 'material-ui'
 import './loginstyles.css'
 
@@ -32,7 +29,7 @@ class Login extends Component {
                                 <Typography variant="headline" component="h2">
                                     LOGIN
                                 </Typography>
-                                <form noValidate autoComplete="off">
+                                <form validate autoComplete="off">
                                     <TextField
                                         id="with-placeholder"
                                         label="Username or Email"
