@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import { ReactDOM } from 'react-dom';
 import {
     AppBar,
     Toolbar,
@@ -9,8 +7,7 @@ import {
     Card,
     CardContent,
     CardActions,
-    TextField,
-    RaisedButton
+    TextField
 } from 'material-ui'
 import './signupstyles.css'
 
