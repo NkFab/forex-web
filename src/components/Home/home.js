@@ -6,26 +6,80 @@ import {
     Toolbar,
     Typography,
     Button,
-    Paper
+    Menu,
+    MenuItem,
+    IconButton
 } from 'material-ui'
+import { PermIdentity } from '@material-ui/icons'
+import MenuIcon from '@material-ui/icons/Menu';
 import './homestyles.css'
 
 class Home extends Component {
+    state = {
+        auth: true,
+        anchorEl: null,
+    };
+
+    handleChange = (event, checked) => {
+        this.setState({ auth: checked });
+    };
+
+    handleMenu = event => {
+        this.setState({ anchorEl: event.currentTarget });
+    };
+
     render() {
+        const { auth, anchorEl } = this.state;
+        const open = Boolean(anchorEl);
         return (
-            <div>
+            <div className="root">
                 <AppBar position="fixed" color="primary" elevation="none">
                     <Toolbar>
-                        <Typography variant="title" color="inherit">
+                        <Typography variant="title" color="inherit" className="flex">
                             forext
                         </Typography>
-                        <div className="menu">
-                            <Link to="login" style={{ textDecoration: 'none' }}>
+                        <div>
+                            {/* <Link to="login" style={{ textDecoration: 'none' }}>
                                 <Button color="secondary">LOGIN</Button>
                             </Link>
                             <Link to="dashboard" style={{ textDecoration: 'none' }}>
                                 <Button color="secondary">SIGN UP</Button>
-                            </Link>
+                            </Link> */}
+                            {auth && (
+                                <div>
+                                    <IconButton
+                                        aria-owns={open ? 'menu-appbar' : null}
+                                        aria-haspopup="true"
+                                        onClick={this.handleMenu}
+                                        color="inherit"
+                                    >
+                                        <PermIdentity />
+                                    </IconButton>
+                                    <Menu
+                                        id="menu-appbar"
+                                        anchorEl={anchorEl}
+                                        anchorOrigin={{
+                                            vertical: 'top',
+                                            horizontal: 'right',
+                                        }}
+                                        transformOrigin={{
+                                            vertical: 'top',
+                                            horizontal: 'right',
+                                        }}
+                                        open={open}
+                                    >
+                                        <Link to="login" style={{ textDecoration: 'none' }}>
+                                            <MenuItem>Login</MenuItem>
+                                        </Link>
+                                        <Link to="signup" style={{ textDecoration: 'none' }}>
+                                            <MenuItem>Create Account</MenuItem>
+                                        </Link>
+                                    </Menu>
+                                    <IconButton color="inherit">
+                                        <MenuIcon />
+                                    </IconButton>
+                                </div>
+                            )}
                         </div>
                     </Toolbar>
                 </AppBar>
