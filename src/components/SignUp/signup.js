@@ -58,11 +58,6 @@ class SignUp extends Component {
                                             placeholder="eg. kg # st, avenue"
                                         // margin="normal"
                                         />
-                                        <br />
-                                        <br />
-                                        <CardActions>
-                                            <Button href={() => alert('clicked')} size="small" variant="raised" color="primary">Sign Up</Button>
-                                        </CardActions>
                                     </div>
                                     <div className="right">
                                         <TextField
@@ -89,13 +84,14 @@ class SignUp extends Component {
                                         // autoComplete="current-password"
                                         // margin="normal"
                                         />
-                                    </div>
-                                    <div className="btn">
-                                        
+                                          <br />
+                                        <br />
+                                        <CardActions>
+                                            <Button href={() => alert('clicked')} size="small" variant="raised" color="primary">Sign Up</Button>
+                                        </CardActions>
                                     </div>
                                 </form>
                             </CardContent>
-
                         </Card>
                     </div>
                 </div>
