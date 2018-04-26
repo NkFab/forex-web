@@ -29,7 +29,7 @@ class Login extends Component {
                                 <Typography variant="headline" component="h2">
                                     LOGIN
                                 </Typography>
-                                <form noValidate autoComplete="off">
+                                <form validate autoComplete="off">
                                     <TextField
                                         id="with-placeholder"
                                         label="Username or Email"
