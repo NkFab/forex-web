@@ -9,9 +9,10 @@ import {
     Paper
 } from 'material-ui'
 import './homestyles.css'
-
-class Home extends Component {
+class home extends Component {
+  
     render() {
+       
         return (
             <div>
                 <AppBar position="fixed" color="primary" elevation="none">
@@ -41,10 +42,10 @@ class Home extends Component {
                     </div>
                 </div>
                 <div id="about" className="about">
-                    <h1>About</h1>
+                    
                 </div>
             </div>
         )
     }
 }
-export default Home;
+export default home;

@@ -12,7 +12,7 @@ import Login from './components/Login/login'
 import SignUp from './components/SignUp/signup'
 import Dashboard from './components/Dashboard/screen/Dashboard'
 import { createMuiTheme } from 'material-ui/styles';
-
+import Demo from './Demo'
 // __SIMPLE_API_ENDPOINT__ looks like: 'https://api.graph.cool/simple/v1/__SERVICE_ID__'
 const httpLink = new HttpLink({ uri: 'https://api.graph.cool/simple/v1/cjftd0aan5wux0178970bcwmw' })
 

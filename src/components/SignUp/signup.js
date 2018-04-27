@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
-import { Link,withRouter} from 'react-router-dom'
-import { ReactDOM } from 'react-dom';
+import PropTypes from 'prop-types';
 
+import { Link, withRouter } from 'react-router-dom'
+import { ReactDOM } from 'react-dom';
+import { geolocated } from 'react-geolocated';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
 import {
@@ -18,31 +20,53 @@ import {
 import './signupstyles.css'
 
 class SignUp extends Component {
-    state = {
+    static PropTypes = {
+        latitude: PropTypes.string.isRequired,
+        longitude: PropTypes.string.isRequired
+    }
+    constructor(props){
+        super(props);
+    this.state = {
         email: '',
-        phone:'',
-        companyName:'',
-        password:'',
-        address:'',
+        phone: '',
+        companyName: '',
+        password: '',
+        address: '',
         opening: '',
-        closing:''
-        
-      }
-      handleSignup = async () => {
-        const {email,phone,companyName,password,address,opening,closing} = this.state
-        console.log(email)
-        await this.props.CreateUserMutation({variables: {email,phone,companyName,password,address,opening,closing}})
-        this.props.history.replace('/')
+        closing: '',
+        latitude:'',
+        longitude:''
+    } }
+    componentWillReceiveProps(nextProps)
+    {
+        this.setState({
+            latitude: nextProps.coords.latitude.toString(),
+            longitude:nextProps.coords.longitude.toString()
+        })
+    }
+    handleSignup = async () => {
+            const { email, phone, companyName, password, address, opening, closing,latitude,longitude } = this.state
+            console.log(latitude)
+            console.log(longitude)
+            console.log(email)
+            let response
+            try {
+                response = await this.props.CreateUserMutation({ variables: { email, phone, companyName, password, address, opening, closing, latitude, longitude } })
+                alert(response)
+                this.props.history.replace('/')
+            } catch (err) {
+                console.log(err)
+            }
+    
+    }
 
-      }
-      
     render() {
         return (
             <div>
                 <AppBar position="fixed" color="primary" elevation="none">
                     <Toolbar className="appb">
                         <Typography variant="title" color="inherit">
-                            forext
+                           forext
                         </Typography>
                     </Toolbar>
                 </AppBar>
@@ -60,7 +84,7 @@ class SignUp extends Component {
                                             label="Email"
                                             placeholder="Email"
                                             value={this.state.email}
-                                            onChange={e => this.setState({email: e.target.value})}
+                                            onChange={e => this.setState({ email: e.target.value })}
                                         />
                                         <br />
                                         <TextField
@@ -69,23 +93,23 @@ class SignUp extends Component {
                                             placeholder="Password"
                                             type="password"
                                             value={this.state.password}
-                                            onChange={e => this.setState({password: e.target.value})}
+                                            onChange={e => this.setState({ password: e.target.value })}
                                         />
                                         <br />
                                         <TextField
                                             id="with-placeholder"
                                             label="Address"
                                             value={this.state.address}
-                                            onChange={e => this.setState({address: e.target.value})}
+                                            onChange={e => this.setState({ address: e.target.value })}
                                             placeholder="eg. kg # st, avenue"
                                         // margin="normal"
                                         />
-                                         <br />
+                                        <br />
                                         <TextField
                                             id="password-input"
                                             label="Phone number"
                                             value={this.state.phone}
-                                            onChange={e => this.setState({phone: e.target.value})}
+                                            onChange={e => this.setState({ phone: e.target.value })}
                                             // className={classes.textField}
                                             placeholder="Phone number"
                                         // autoComplete="current-password"
@@ -98,23 +122,23 @@ class SignUp extends Component {
                                             label="Company name"
                                             placeholder="Company name"
                                             value={this.state.companyName}
-                                            onChange={e => this.setState({companyName: e.target.value})}
+                                            onChange={e => this.setState({ companyName: e.target.value })}
                                         />
                                         <br />
                                         <TextField
                                             id="password"
                                             label="Opening Hours"
                                             value={this.state.opening}
-                                            onChange={e => this.setState({opening: e.target.value})}
+                                            onChange={e => this.setState({ opening: e.target.value })}
                                         />
-                                         <br />
+                                        <br />
                                         <TextField
                                             id="password"
                                             label="Closing Hours"
                                             value={this.state.closing}
-                                            onChange={e => this.setState({closing: e.target.value})}
+                                            onChange={e => this.setState({ closing: e.target.value })}
                                         />
-                                          <br />
+                                        <br />
                                         <br />
                                         <CardActions>
                                             <Button onClick={this.handleSignup} size="small" variant="raised" color="primary">Sign Up</Button>
@@ -131,8 +155,34 @@ class SignUp extends Component {
 }
 
 const signUpMutation = gql`
-mutation CreateUserMutation($companyName: String!,$address: String!,$opening: String!,$closing: String!,$phone: String!, $email: String!, $password: String!) {
-    createUser(companyName: $companyName,address: $address,openingHour:$opening,closingHour: $closing,phoneNumber: $phone,authProvider: { email: { email:$email, password:$password } }){
+mutation CreateUserMutation(
+    $latitude: String!,
+    $longitude: String!,
+    $companyName: String!,
+    $address: String!,
+    $opening: String!,
+    $closing: String!,
+    $phone: String!, 
+    $email: String!, 
+    $password: String!
+) {
+    createUser(
+        location:{
+            latitude: $latitude,
+            longitude: $longitude
+        },
+        companyName: $companyName,
+        address: $address,
+        openingHour:$opening,
+        closingHour: $closing,
+        phoneNumber: $phone,
+        authProvider: { 
+            email: 
+            { 
+                 email:$email,
+                 password:$password 
+            } 
+        }){
         id
         companyName
         email
@@ -141,9 +191,19 @@ mutation CreateUserMutation($companyName: String!,$address: String!,$opening: St
         phoneNumber
         openingHour
         closingHour
+        location{
+            id
+            latitude
+            longitude
+          }
       }
   }
 `;
 
-const CreatePageWithMutation = graphql(signUpMutation, {name: 'CreateUserMutation'})(SignUp)
-export default withRouter(CreatePageWithMutation)
+const CreatePageWithMutation = graphql(signUpMutation, { name: 'CreateUserMutation' })(SignUp)
+export default geolocated({
+    positionOptions: {
+        enableHighAccuracy: false,
+    },
+    userDecisionTimeout: 5000,
+})(withRouter(CreatePageWithMutation))
