@@ -131,7 +131,18 @@ class Home extends Component {
                     </div>
                 </div>
                 <div id="about" className="about">
+                <br /><br />
                     <h1>About</h1>
+                    <p>forext was designed by the developing team from Limiteless apps 
+                    which is part of the Limitless agency group.
+                    </p>
+                    <h3>What we beleive in</h3>
+                    <p>" If you make a product good enough, even though you live in the depths 
+                    of the forest the public will make a path to your door. But if you want the 
+                    public in sufficient numbers, you would better construct a highway " William Randolph</p>
+                    <h3>Mission</h3>
+                    <br />
+                    <h3>Vision</h3>
                 </div>
                 <div id="contact" className="contact">
                     <h1>Contact</h1>
