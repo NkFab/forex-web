@@ -19,9 +19,29 @@
 }
 .about{
     height: 100vh;
-    background: white;
+    background: #197e5c;
     margin-top: 0%;
     overflow: hidden;
+}
+.features{
+	height: 100vh;
+	padding-top: 3%;
+	text-align: center;
+    background: #005364;
+    margin-top: 0%;
+	overflow: hidden;
+	color: white;
+}
+.contact{
+	height: 100vh;
+    background: #534741;
+    margin-top: 0%;
+    overflow: hidden;
+}
+.register{
+	float: left;
+	margin-left: 10%;
+	padding: 2%;
 }
 /* .dot{
 	margin: auto auto;

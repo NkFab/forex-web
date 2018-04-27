@@ -13,6 +13,8 @@ import {
 import { PermIdentity } from '@material-ui/icons'
 import MenuIcon from '@material-ui/icons/Menu';
 import './homestyles.css'
+import note from '../Images/note.png'
+import { classNames } from 'classnames';
 
 class Home extends Component {
     state = {
@@ -75,7 +77,7 @@ class Home extends Component {
                                             <MenuItem>Create Account</MenuItem>
                                         </Link>
                                     </Menu>
-                                    <IconButton color="inherit">
+                                    <IconButton color="inherit-">
                                         <MenuIcon />
                                     </IconButton>
                                 </div>
@@ -94,8 +96,25 @@ class Home extends Component {
                         </Link>
                     </div>
                 </div>
+                <div id="features" className="features">
+                    <h1>Features</h1>
+                    <div className="register">
+                        <img src={note} />
+                        <br />
+                        <p>Register your forex bureau to make it discoverable on the map whenever 
+                        a client is in search of the nearest office.</p>
+                    </div>
+                    <div>
+                        
+                    </div>
+                    <div></div>
+                    <div></div>
+                </div>
                 <div id="about" className="about">
                     <h1>About</h1>
+                </div>
+                <div id="contact" className="contact">
+                    <h1>Contact</h1>
                 </div>
             </div>
         )
