@@ -13,8 +13,10 @@ import {
 import { PermIdentity } from '@material-ui/icons'
 import MenuIcon from '@material-ui/icons/Menu';
 import './homestyles.css'
-import note from '../Images/note.png'
-import { classNames } from 'classnames';
+import note from '../../assets/note.png'
+import exchange from '../../assets/money-exchange.png'
+import uprates from '../../assets/currency-rates.png'
+import dash from '../../assets/dashboard.png'
 
 class Home extends Component {
     state = {
@@ -97,18 +99,36 @@ class Home extends Component {
                     </div>
                 </div>
                 <div id="features" className="features">
+                <br /><br />
                     <h1>Features</h1>
                     <div className="register">
                         <img src={note} />
                         <br />
+                        <h3>Register</h3>
                         <p>Register your forex bureau to make it discoverable on the map whenever 
                         a client is in search of the nearest office.</p>
                     </div>
-                    <div>
-                        
+                    <div className="exrates">
+                        <img src={exchange} />
+                        <br />
+                        <h3>Rates</h3>
+                        <p>Post your exchange rates to help us compare your rates to 
+                        other forex bureax' rates.</p>
                     </div>
-                    <div></div>
-                    <div></div>
+                    <div className="update">
+                        <img src={uprates} />
+                        <br />
+                        <h3>Update</h3>
+                        <p>Continue to update your currency exchange rates as they change to
+                         give out accurate information.</p>
+                    </div>
+                    <div className="dashb">
+                        <img src={dash} />
+                        <br />
+                        <h3>Dashboard</h3>
+                        <p>Dashboard where you will be able to do various actions and 
+                        manage your profile on forext. </p>
+                    </div>
                 </div>
                 <div id="about" className="about">
                     <h1>About</h1>

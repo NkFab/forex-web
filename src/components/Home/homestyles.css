@@ -25,7 +25,7 @@
 }
 .features{
 	height: 100vh;
-	padding-top: 3%;
+	padding: 5% 10% 0% 10%;
 	text-align: center;
     background: #005364;
     margin-top: 0%;
@@ -40,8 +40,27 @@
 }
 .register{
 	float: left;
-	margin-left: 10%;
+	margin-left: 2%;
 	padding: 2%;
+	width: 12%;
+}
+.exrates{
+	float: left;
+	padding: 2%;
+	margin-left: 10%;
+	width: 12%;
+}
+.update{
+	float: left;
+	padding: 2%;
+	margin-left: 10%;
+	width: 12%;
+}
+.dashb{
+	float: left;
+	padding: 2%;
+	margin-left: 10%;
+	width: 12%;
 }
 /* .dot{
 	margin: auto auto;
