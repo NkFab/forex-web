@@ -13,7 +13,7 @@ const styles = theme => ({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        // marginTop: 100
+        // marginLeft: 300
     },
     content:{
         display: 'flex',
@@ -63,6 +63,8 @@ const styles = theme => ({
         fontSize: 20,
         color:'#006442',
         fontWeight: 'bold',
+        marginTop: 70,
+        marginLeft: -90,
     },
     menuItem: {
         marginTop: -8,

@@ -4,11 +4,15 @@ const ScreenHeight= window.innerHeight
 const ScreenWidth= window.innerWidth
 
 const styles = theme => ({
+    bigContainer:{
+        display: 'flex',
+        width: ScreenWidth/2.8,
+    },
     container: {
         display: 'flex',
         flexDirection: 'column',
         overflow: 'hidden',
-        height: ScreenHeight,
+        // height: ScreenHeight,
         width: ScreenWidth/4.5,
         backgroundColor: '#008b5c',
         color:'white',

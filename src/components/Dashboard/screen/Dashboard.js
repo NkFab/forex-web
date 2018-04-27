@@ -9,6 +9,7 @@ import Dialog, {
   DialogTitle,
 } from 'material-ui/Dialog';
 import SvgIcon from 'material-ui/SvgIcon';
+import Typography from 'material-ui/Typography';
 
 import DialogBox from '../components/DialogBox/DialogBox'
 import CardContainer from '../components/Card/CardContainer'
@@ -22,18 +23,19 @@ class Dashboard extends React.Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
       spacing: '16',
       open: false,
       openUpdate: false,
       data: [
-        {name: 'bob'}, 
-        {name: 'chris'},
-        {name: 'bob'}, 
-        {name: 'chris'},
-        {name: 'bob'}, 
+        {currency: 'USD', rate: '861'}, 
+        {currency: 'GBP', rate: '1012'},
+        {currency: 'EUR', rate: '978'}, 
+        {currency: 'RWF', rate: '1'},
+        {currency: 'AED', rate: '201'}, 
       ],
+      buy: '',
+      sell: '',
     };
   }
 
@@ -59,6 +61,7 @@ class Dashboard extends React.Component {
   handleCloseUpdate = () => {
     this.setState({ openUpdate: false });
   };
+  keyExtractor = (item, index) => index.toString()
 
 
   render() {
@@ -69,21 +72,23 @@ class Dashboard extends React.Component {
       <div className={classes.container}>
         <MenuCard onClick={this.handleClickOpen}/>
         <div className={classes.wrapper}>
-        {/* <Header /> */}
-
-          <CardContainer 
-              title="Buy" 
-              currency="USD"
-              rate="892" 
+        <Header />
+          <Typography className={classes.title} >Buy</Typography>
+          {this.state.data.map(d => <CardContainer
+              value={this.keyExtractor} 
+              // title="Buy" 
+              currency={d.currency}
+              rate={d.rate} 
               buttonTxt="Update" 
-              onClick={this.handleClickOpenUpdate}/>
-
-          <CardContainer 
-              title="Sell" 
-              currency="USD"
-              rate="898" 
+              onClick={this.handleClickOpenUpdate}/>)}
+          <Typography className={classes.title} >Sell</Typography>
+          {this.state.data.map(d => <CardContainer
+              value={this.keyExtractor} 
+              // title="Buy" 
+              currency={d.currency}
+              rate={d.rate} 
               buttonTxt="Update" 
-              onClick={this.handleClickOpenUpdate}/>    
+              onClick={this.handleClickOpenUpdate}/>)}
         </div>
         <Dialog
           open={this.state.open}
@@ -91,7 +96,8 @@ class Dashboard extends React.Component {
           aria-labelledby="form-dialog-title"
         >
           <DialogBox 
-              title="Add Somme Currency to be displayed on that list" 
+              title="Add Currency"
+              description="Add Somme Currency to be displayed on that list" 
               buttonTxt="Add Currency"
               buttonTxt2="Cancel"
               onClick={this.handleClose}
@@ -104,7 +110,8 @@ class Dashboard extends React.Component {
           aria-labelledby="form-dialog-title"
         >
           <DialogBox 
-              title="Update your Currency to be displayed on that list" 
+              title="Update Currency" 
+              description="Update the currency that selected"
               buttonTxt="Update"
               buttonTxt2="Cancel"
               onClick={this.handleCloseUpdate}
@@ -112,15 +119,6 @@ class Dashboard extends React.Component {
           />
         </Dialog>
       </div>
-      //     </div>
-      //     <div className="left">
-      //       <h3>center side</h3>
-      //       <ul>
-      //         {this.state.data.map(d => <li key={d.name}>{d.name}</li>)}
-      //       </ul>
-      //     </div>
-      //   </div> */}
-      // </div>
     );
   }
 }

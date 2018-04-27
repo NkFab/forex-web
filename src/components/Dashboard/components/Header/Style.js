@@ -1,12 +1,17 @@
 // import {white, red500} from 'material-ui/styles/colors';
 
+const ScreenHeight= window.innerHeight
+const ScreenWidth= window.innerWidth 
+
 const style = {
     appBar: {
       display: 'flex',
+      left: 303,
       // overflow: 'hidden',
       height: 50,
-      backgroundColor: 'primary',
-      color:'white',
+      width: ScreenWidth/1.2,
+      backgroundColor: 'white',
+      color:'#005464',
       justifyContent: 'center'
     },
     menuButton: {
@@ -23,7 +28,7 @@ const style = {
       position: 'absolute',
       left: 0,
       marginLeft: 50,
-      color:'white',
+      color:'#005464',
       fontWeight: 'bold',
     }
   };

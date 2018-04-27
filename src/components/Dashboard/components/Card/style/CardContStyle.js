@@ -2,9 +2,13 @@ const ScreenHeight= window.innerHeight
 const ScreenWidth= window.innerWidth
 const styles = theme => ({
     container: {
-        // display: 'flex',
-        flexDirection: 'row wrap',
-        // padding: 20,
+        display: 'flex',
+        flexDirection: 'column',
+        // margin: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginLeft: 10,
+        padding: 15,
         // width: '100%',
         // backgroundColor: '#E5E8E8'
     },
@@ -14,8 +18,6 @@ const styles = theme => ({
     },
     content:{
         display: 'flex',
-        // alignItems: 'center',
-        // justifyContent: 'center',
         // flexGrow: 1,
         // marginTop: 20,
         // marginLeft: ScreenWidth/8.5,
@@ -73,11 +75,13 @@ const styles = theme => ({
         borderColor: '#006442',
     },
     currencytitle:{
+        // position: 'fixed',
+        left: 0,
         fontWeight: 'bold',
         color: theme.palette.primary.main,
         fontSize: 18,
         // justifyContent: 'flex-start'
-        marginRight: ScreenWidth /50
+        // marginRight: ScreenWidth /2
     },
     currencyrate:{
         fontWeight: 'bold',
@@ -99,7 +103,7 @@ const styles = theme => ({
         // paddingLeft: 100
     },
     button:{
-        backgroundColor: theme.palette.primary.main,
+        backgroundColor: '#005464',
         color: 'white',
         fontWeight: 'bold',
         borderRadius: 5,
@@ -107,7 +111,13 @@ const styles = theme => ({
         height: ScreenHeight /15,
         justifyContent: 'center',
         alignItems: 'center',
-        marginLeft: ScreenWidth /10
+        marginLeft: ScreenWidth /10,
+        '&:hover, &$focusVisible': {
+            border: 'groove',
+            borderColor: '#005464',
+            color: '#005464',
+            fontWeight: 'bold',
+        }
     }
   });
   
