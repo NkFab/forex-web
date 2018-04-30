@@ -46,8 +46,8 @@ class Login extends Component {
                                 <form validate autoComplete="off">
                                     <TextField
                                         id="with-placeholder"
-                                        label="Company Name or Email"
-                                        placeholder="Company Name or Email"
+                                        label="Email"
+                                        placeholder="Email"
                                         value={this.state.email}
                                         onChange={e => this.setState({email: e.target.value})}
                                     />
