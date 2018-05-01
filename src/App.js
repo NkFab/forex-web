@@ -10,6 +10,7 @@ import Home from './components/Home/home'
 import Login from './components/Login/login'
 import SignUp from './components/SignUp/signup'
 import Dashboard from './components/Dashboard/screen/Dashboard'
+// import SimpleFormExample from './components/tests/test'
 import { createMuiTheme } from 'material-ui/styles';
 
 // __SIMPLE_API_ENDPOINT__ looks like: 'https://api.graph.cool/simple/v1/__SERVICE_ID__'
@@ -46,6 +47,7 @@ class App extends Component {
             <Route path="/login" component={Login} />
             <Route path="/signup" component={SignUp} />
             <Route path="/dashboard" component={Dashboard} />
+            {/* <Route path="/tests" component={SimpleFormExample} /> */}
           </div>
         </Router>
         </MuiThemeProvider>
