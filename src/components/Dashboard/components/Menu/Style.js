@@ -6,7 +6,9 @@ const ScreenWidth= window.innerWidth
 const styles = theme => ({
     bigContainer:{
         display: 'flex',
+        position: 'fixed',
         width: ScreenWidth/2.8,
+        height: '100vh'
     },
     container: {
         display: 'flex',

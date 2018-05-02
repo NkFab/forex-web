@@ -4,13 +4,9 @@ const styles = theme => ({
     container: {
         display: 'flex',
         flexDirection: 'column',
-        // margin: 10,
         alignItems: 'center',
         justifyContent: 'center',
-        marginLeft: 10,
         padding: 15,
-        // width: '100%',
-        // backgroundColor: '#E5E8E8'
     },
     wrapper:{
         // display: 'flex',
@@ -94,7 +90,7 @@ const styles = theme => ({
         display: 'flex',
         flexDirection: 'row wrap',
         width: ScreenWidth/2,
-        height: 70,
+        height: 50,
         backgroundColor:'white',
         color:'black',
         textAlign: 'center',
@@ -118,7 +114,8 @@ const styles = theme => ({
             color: '#005464',
             fontWeight: 'bold',
         }
-    }
+    },
+    
   });
   
 
