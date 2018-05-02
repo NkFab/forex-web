@@ -24,49 +24,49 @@ class SignUp extends Component {
         latitude: PropTypes.string.isRequired,
         longitude: PropTypes.string.isRequired
     }
-    constructor(props){
+    constructor(props) {
         super(props);
-    this.state = {
-        email: '',
-        phone: '',
-        companyName: '',
-        password: '',
-        address: '',
-        opening: '',
-        closing: '',
-        latitude:'',
-        longitude:''
-    } }
-    componentWillReceiveProps(nextProps)
-    {
+        this.state = {
+            email: '',
+            phone: '',
+            companyName: '',
+            password: '',
+            address: '',
+            opening: '',
+            closing: '',
+            latitude: '',
+            longitude: ''
+        }
+    }
+    componentWillReceiveProps(nextProps) {
         this.setState({
             latitude: nextProps.coords.latitude.toString(),
-            longitude:nextProps.coords.longitude.toString()
+            longitude: nextProps.coords.longitude.toString()
         })
     }
     handleSignup = async () => {
-            const { email, phone, companyName, password, address, opening, closing,latitude,longitude } = this.state
-            console.log(latitude)
-            console.log(longitude)
-            console.log(email)
-            let response
-            try {
-                response = await this.props.CreateUserMutation({ variables: { email, phone, companyName, password, address, opening, closing, latitude, longitude } })
-                alert(response)
-                this.props.history.replace('/')
-            } catch (err) {
-                console.log(err)
-            }
-    
+        const { email, phone, companyName, password, address, opening, closing, latitude, longitude } = this.state
+        console.log(latitude)
+        console.log(longitude)
+        console.log(email)
+        let response
+        try {
+            response = await this.props.CreateUserMutation({ variables: { email, phone, companyName, password, address, opening, closing, latitude, longitude } })
+            alert(response)
+            this.props.history.replace('/')
+        } catch (err) {
+            console.log(err)
+        }
+
     }
 
     render() {
         return (
             <div>
-                <AppBar position="fixed" color="primary" elevation="none">
+                <AppBar position="fixed" color="primary">
                     <Toolbar className="appb">
                         <Typography variant="title" color="inherit">
-                           forext
+                            forext
                         </Typography>
                     </Toolbar>
                 </AppBar>
@@ -203,7 +203,7 @@ mutation CreateUserMutation(
 const CreatePageWithMutation = graphql(signUpMutation, { name: 'CreateUserMutation' })(SignUp)
 export default geolocated({
     positionOptions: {
-        enableHighAccuracy: false,
+        enableHighAccuracy: true,
     },
     userDecisionTimeout: 5000,
 })(withRouter(CreatePageWithMutation))
