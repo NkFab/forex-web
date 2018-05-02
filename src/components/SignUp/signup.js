@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'; 
 import { Link, withRouter } from 'react-router-dom'
 import {
     TextValidator,
@@ -7,6 +8,7 @@ import {
 } from 'react-material-ui-form-validator'
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
+import { geolocated } from 'react-geolocated';
 import {
     AppBar,
     Toolbar,
@@ -28,9 +30,15 @@ import {
 import './signupstyles.css'
 
 class SignUp extends Component {
+    static PropTypes = {
+        latitude: PropTypes.string.isRequired,
+        longitude: PropTypes.string.isRequired
+    }
     constructor(props) {
         super(props);
         this.state = {
+            latitude: '',
+            longitude: '',
             user: {
                 email: null,
                 password: null,
@@ -41,14 +49,19 @@ class SignUp extends Component {
                 openat: '',
                 closedat: '',
                 workdays: '',
-                agree: ''
+                agree: '',
             },
             submitted: false,
         };
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            latitude: nextProps.coords.latitude.toString(),
+            longitude: nextProps.coords.longitude.toString()
+        })
+    }
     componentWillMount() {
         // custom rule will have name 'isPasswordMatch'
         ValidatorForm.addValidationRule('isPasswordMatch', (value) => {
@@ -85,13 +98,12 @@ class SignUp extends Component {
     //     closing:''
 
     //   }
-    //   handleSignup = async () => {
-    //     const {email,phone,companyName,password,address,opening,closing} = this.state
-    //     console.log(email)
-    //     await this.props.CreateUserMutation({variables: {email,phone,companyName,password,address,opening,closing}})
-    //     this.props.history.replace('/')
-
-    //   }
+      handleSignup = async () => {
+        const {user:{email,phone,phoneopt,companyName,password,address,openat,closedat,workdays},latitude,longitude} = this.state
+        await this.props.CreateUserMutation({variables: {email,phone,phoneopt,companyName,password,address,openat,closedat,workdays,latitude,longitude}})
+        alert('Thank you for Sign up')
+        this.props.history.replace('/dashboard')
+      }
 
     render() {
         const { user, submitted } = this.state;
@@ -268,7 +280,7 @@ class SignUp extends Component {
                                     {/* <CardActions> */}
                                     {/* <Button fullWidth onClick={this.handleSignup} size="small" variant="raised" color="primary">Sign Up</Button> */}
                                     <Button
-                                        // onClick={this.handleSubmit}
+                                        onClick={this.handleSignup}
                                         fullWidth
                                         variant="raised"
                                         color="primary"
@@ -373,21 +385,55 @@ class SignUp extends Component {
         )
     }
 }
-
 const signUpMutation = gql`
-mutation CreateUserMutation($companyName: String!,$address: String!,$opening: String!,$closing: String!,$phone: String!, $email: String!, $password: String!) {
-    createUser(companyName: $companyName,address: $address,openingHour:$opening,closingHour: $closing,phoneNumber: $phone,authProvider: { email: { email:$email, password:$password } }){
+mutation CreateUserMutation(
+    $companyName: String!,
+    $address: String!,
+    $openat: String!,
+    $closedat: String!,
+    $workdays: String!,
+    $phone: String!,
+    $phoneopt: String!,
+     $email: String!,
+      $password: String!,
+    $longitude: String!,
+$latitude: String!) {
+    createUser(
+        location:{
+            latitude: $latitude,
+        longitude: $longitude
+    },
+        companyName: $companyName,
+        address: $address,
+        openingHour: $openat,
+        closingHour: $closedat,
+        phoneNumber: $phone,
+        phoneNumber2: $phoneopt,
+        wdays: $workdays,
+        authProvider: 
+        { email: { email: $email, password: $password } }){
         id
         companyName
         email
-        password
         address
         phoneNumber
+        phoneNumber2
         openingHour
         closingHour
-      }
+        wdays
+        location{
+          id
+          latitude
+          longitude
+        }
   }
+}
 `;
 
 const CreatePageWithMutation = graphql(signUpMutation, { name: 'CreateUserMutation' })(SignUp)
-export default withRouter(CreatePageWithMutation)
+export default geolocated({
+    positionOptions: {
+        enableHighAccuracy: true,
+    },
+    userDecisionTimeout: 5000,
+})(withRouter(CreatePageWithMutation))
