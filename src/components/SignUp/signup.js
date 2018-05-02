@@ -84,20 +84,7 @@ class SignUp extends Component {
         });
     }
 
-    // handleSubmit() {
-    //     // your submit logic
-    // }
 
-    // state = {
-    //     email: '',
-    //     phone:'',
-    //     companyName:'',
-    //     password:'',
-    //     address:'',
-    //     opening: '',
-    //     closing:''
-
-    //   }
       handleSignup = async () => {
         const {user:{email,phone,phoneopt,companyName,password,address,openat,closedat,workdays},latitude,longitude} = this.state
         await this.props.CreateUserMutation({variables: {email,phone,phoneopt,companyName,password,address,openat,closedat,workdays,latitude,longitude}})
@@ -277,106 +264,16 @@ class SignUp extends Component {
                                             <p>I agree to the terms and conditions.</p>
                                         </div>
                                     </div>
-                                    {/* <CardActions> */}
-                                    {/* <Button fullWidth onClick={this.handleSignup} size="small" variant="raised" color="primary">Sign Up</Button> */}
-                                    <Button
+                                  <Button
                                         onClick={this.handleSignup}
                                         fullWidth
                                         variant="raised"
                                         color="primary"
                                         type="submit"
-                                        // label={
-                                        //     (submitted && 'Your form is submitted!')
-                                        //     || (!submitted && 'Submit')
-                                        // }
-                                        // style={{ marginRight: '16px' }}
-                                        // disabled={submitted}
                                     >
                                         Sign Up
                                         </Button>
-                                    {/* </CardActions> */}
                                 </div>
-                                {/* <form noValidate autoComplete="off">
-                                    <div className="left">
-                                        <TextField
-                                            id="with-placeholder"
-                                            label="Email"
-                                            placeholder="Email"
-                                            value={this.state.email}
-                                            onChange={e => this.setState({email: e.target.value})}
-                                        />
-                                        <br />
-                                        <br />
-                                        <TextField
-                                            id="password-input"
-                                            label="Password"
-                                            placeholder="Password"
-                                            type="password"
-                                            value={this.state.password}
-                                            onChange={e => this.setState({password: e.target.value})}
-                                        />
-                                        <br />
-                                        <br />
-                                        <TextField
-                                            id="with-placeholder"
-                                            label="Address"
-                                            value={this.state.address}
-                                            onChange={e => this.setState({address: e.target.value})}
-                                            placeholder="eg. kg # st, avenue"
-                                        // margin="normal"
-                                        />
-                                         <br />
-                                        <TextField
-                                            id="password-input"
-                                            label="Phone number"
-                                            value={this.state.phone}
-                                            onChange={e => this.setState({phone: e.target.value})}
-                                            // className={classes.textField}
-                                            placeholder="Phone number"
-                                        // autoComplete="current-password"
-                                        // margin="normal"
-                                        />
-                                    </div>
-                                    <div className="right">
-                                        <TextField
-                                            id="with-placeholder"
-                                            label="Company name"
-                                            placeholder="Company name"
-                                            value={this.state.companyName}
-                                            onChange={e => this.setState({companyName: e.target.value})}
-                                        />
-                                        <br />
-                                        <br />
-                                        <TextField
-                                            id="password"
-                                            label="Opening Hours"
-                                            value={this.state.opening}
-                                            onChange={e => this.setState({opening: e.target.value})}
-                                        />
-                                        <br />
-                                        <br />
-                                         <br />
-                                        <TextField
-                                            id="password"
-                                            label="Closing Hours"
-                                            value={this.state.closing}
-                                            onChange={e => this.setState({closing: e.target.value})}
-                                        />
-                                        <br />
-                                        <br />
-                                        <CardActions>
-                                            <Button fullWidth href={() => alert('clicked')} size="small" variant="raised" color="primary">Sign Up</Button>
-                                        </CardActions>
-                                    </div>
-                                    <div className="btn">
-                                        
-                                          <br />
-                                        <br />
-                                        <CardActions>
-                                            <Button onClick={this.handleSignup} size="small" variant="raised" color="primary">Sign Up</Button>
-                                        </CardActions>
-                                    </div>
-                                </form> */}
                             </CardContent>
                         </Card>
                     </div>
