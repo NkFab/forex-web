@@ -11,8 +11,7 @@ import {
     Card,
     CardContent,
     CardActions,
-    TextField,
-    RaisedButton
+    TextField
 } from 'material-ui'
 import './loginstyles.css'
 
@@ -52,11 +51,11 @@ class Login extends Component {
                                 <Typography variant="headline" component="h2">
                                     LOGIN
                                 </Typography>
-                                <form noValidate autoComplete="off">
+                                <form validate autoComplete="off">
                                     <TextField
                                         id="with-placeholder"
-                                        label="Company Name or Email"
-                                        placeholder="Company Name or Email"
+                                        label="Email"
+                                        placeholder="Email"
                                         value={this.state.email}
                                         onChange={e => this.setState({email: e.target.value})}
                                     />

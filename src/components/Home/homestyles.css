@@ -1,7 +1,9 @@
 
-.menu{
-	margin-left: -12;
-    margin-right: 20;
+.root{
+	flex-grow: 1;
+}
+.flex{
+	flex: 1;
 }
 .getbutton{
     background: white;
@@ -17,9 +19,65 @@
 }
 .about{
     height: 100vh;
-    background: white;
+	/* background-color: rgb(25,126,92,0.9);
+	background-image: url("../../assets/bg2.jpg") no-repeat center center fixed; */
+	background: 
+    /* top, transparent red, faked with gradient */ 
+    linear-gradient(
+      rgba(25,126,92,0.95), 
+      rgba(25,126,92,0.95)
+    ), url("../../assets/bg2.jpg") no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	text-align: center;
+	color: white;
+	padding: 5% 10% 0% 10%;
     margin-top: 0%;
     overflow: hidden;
+}
+.features{
+	height: 100vh;
+	padding: 5% 10% 0% 10%;
+	text-align: center;
+    background: #005364;
+    margin-top: 0%;
+	overflow: hidden;
+	color: white;
+}
+.contact{
+	height: 100vh;
+	padding: 5% 10% 0% 10%;
+	text-align: center;
+    background: #534741;
+    margin-top: 0%;
+	overflow: hidden;
+	color: white;
+}
+.register{
+	float: left;
+	margin-left: 2%;
+	padding: 2%;
+	width: 12%;
+}
+.exrates{
+	float: left;
+	padding: 2%;
+	margin-left: 10%;
+	width: 12%;
+}
+.update{
+	float: left;
+	padding: 2%;
+	margin-left: 10%;
+	width: 12%;
+}
+.dashb{
+	float: left;
+	padding: 2%;
+	margin-left: 10%;
+	width: 12%;
 }
 /* .dot{
 	margin: auto auto;

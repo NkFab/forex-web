@@ -1,15 +1,15 @@
 .signup{
-    height: 100vh;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
     background: #40926d;
     margin-top: 0%;
-    overflow: hidden;
-    /* align-items: center; */
 }
 .card{
-    margin-left: 20%;
-    margin-right: 20%;
-    margin-top: 10%;
+    margin: 7% 27% 2% 27%;
     padding: 5%;
+    overflow-y: scroll;
+    /* box-sizing: content-box; */
 }
 .left{
     float: left;
@@ -18,5 +18,14 @@
     float: right;
 }
 .btn{
+    flex: 1;
     float: left;
+    margin-top: 2%;
+    width: 100%;
+}
+.timepickers{
+    width: 200px;
+}
+.agree{
+    display: inline-flex;
 }
