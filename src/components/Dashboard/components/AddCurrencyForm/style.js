@@ -1,35 +1,27 @@
-const ScreenHeight= window.outerHeight
-const ScreenWidth= window.outerWidth
+const ScreenHeight= window.innerHeight
+const ScreenWidth= window.innerWidth
 const styles = theme => ({
     container: {
         display: 'flex',
-        // position: 'fixed',
         flexDirection: 'row wrap',
+        // padding: 20,
         width: '100%',
-        minHeight: '100vh',
-        marginTop: 0,
-        backgroundColor: '#E5E8E8',
-        backgroundSize: 'cover',
-        // alignItems: 'center',
+        backgroundColor: '#E5E8E8'
     },
     wrapper:{
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        marginLeft: ScreenWidth/2.8,
-        // overflow: 'scroll',
+        justifyContent: 'center',
+        // marginLeft: 300
     },
     content:{
-        // display: 'flex',
+        display: 'flex',
         justifyContent: 'center',
-        // overflow: 'scroll',
-        // alignItems: 'center',
-        // marginTop: 100,
-        // width: ScreenWidth/2,
-        // height: ScreenHeight
-    },
-    formContainer:{
-      marginTop: '2%'
+        alignItems: 'center',
+        marginTop: 100,
+        width: ScreenWidth/2,
+        height: ScreenHeight /3
     },
     title:{
         fontSize: 20,
@@ -57,28 +49,35 @@ const styles = theme => ({
        borderColor: '#005464',
        color: '#005464',
        fontWeight: 'bold',
+      '&:hover': {
+         backgroundColor: '#005464',
+         color: 'white',
+         fontWeight: 'bold',
+     },
        '&:active': {
-         boxShadow: 'none',
-         backgroundColor: '#0062cc',
-         borderColor: '#005cbf',
+         backgroundColor: '#005464',
        },
-    //    '&:hover, &$focusVisible': {
-    //      backgroundColor: '#005464',
-    //     //  borderRadius: 5,
-    //      // width: 300,
-    //      color: 'white',
-    //      fontWeight: 'bold',
-    //  },
+       '&:focus': {
+        backgroundColor: '#005464',
+        color: 'white',
+        fontWeight: 'bold',
+        transitionDelay: 12000,
+      },
        width: ScreenWidth/8,
      },
      btnSell:{
-       // backgroundColor: '#005464',
-       borderRadius: 5,
-       // border: 'groove',
-       borderColor: '#005464',
        color: '#005464',
        fontWeight: 'bold',
-       width: ScreenWidth/8
+       width: ScreenWidth/8,
+       '&:active': {
+         backgroundColor: '#005464',
+       },
+       '&:focus': {
+        // boxShadow: '0 0 0 0.2rem rgba(0,123,255,.5)',
+        backgroundColor: '#005464',
+        color: 'white',
+        fontWeight: 'bold',
+      },
      },
       textField:{
         width: ScreenWidth/10,
