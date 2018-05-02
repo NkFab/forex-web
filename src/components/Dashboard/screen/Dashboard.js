@@ -12,7 +12,9 @@ import Grid from 'material-ui/Grid';
 import Slide from 'material-ui/transitions/Slide';
 import Dialog from 'material-ui/Dialog';
 
-
+//appollo things
+import { withApollo, graphql, compose } from 'react-apollo';
+import gql from 'graphql-tag';
 // import SaveButton from '../../components/AddCurrencyForm/saveButton'
 import Form from '../components/AddCurrencyForm/form'
 import DialogBox from '../components/DialogBox/DialogBox'
@@ -43,7 +45,10 @@ class AddCurrency extends React.Component {
       rate: '',
       category: '',
       currencyValue: '',
-      data: myCurriencies
+      data: myCurriencies,
+      userId: 'cjgowzm27hqm00191z1x0c4kv',
+      userData: [],
+      loading: true,
     };
   }
 
@@ -85,21 +90,84 @@ class AddCurrency extends React.Component {
     this.setState({ openUpdate: false });
   };
 
-  handleAnimation = (event) =>{
-    const {category, name, rate} = this.state
-    const newCurrencies = [...this.state.data, {category, name, rate}]
-    this.setState({
-      data: newCurrencies
+
+  //luc's backend code
+  async componentDidMount() {
+    this.currencySubscription = this.props.allCurrencies.subscribeToMore({
+      document: gql`
+        subscription{
+          Currency(
+            filter: {mutation_in: [CREATED, UPDATED]}
+          ){
+            node{
+              id
+              base 
+              category 
+              rates 
+            }
+          }
+        }
+      `,
+      variables: null,
+      updateQuery: (previousState, {subscriptionData}) => {
+        console.log(previousState, subscriptionData)
+      }
     })
-    console.log(this.state.data)
-    this.setState({ checked: true });
+
+  }
+  componentWillReceiveProps(nextProps) {
+    if(nextProps.allCurrencies && !nextProps.allCurrencies.loading){
+      const userCurrencies = nextProps.allCurrencies.allCurrencies.filter( currency => currency.user.id != this.userId)
+      this.setState({
+        data: userCurrencies,
+        loading: nextProps.allCurrencies.loading
+      })
+    }
   }
 
+  handleAnimation = (event) =>{
+    const data = this.state.data
+    const {category, name, rate, userId} = this.state
+
+    this.props.createCurrencyMutation({
+      variables:{
+        base: name,
+        category: category,
+        rates: rate,
+        userId: userId
+      }
+    }).then(response => {
+      //console.log(response)
+      const { base, category, id, rates, user} = response.data.createCurrency
+      const newData = [{base, category, id, rates, user}, ...data]
+      this.setState({
+        data: newData,
+        name: 'RWF',
+        category: '',
+        rate: '',
+        currencyValue: ''
+      })
+    })
+    // const newCurrencies = [...this.state.data, {category, name, rate}]
+    // this.setState({
+    //   data: newCurrencies
+    // })
+    // console.log(this.state.data)
+    // this.setState({ checked: true });
+  }
+  //end of backend code
   keyExtractor = (item, index) => index.toString()
 
   render() {
     const { classes } = this.props;
     const { checked } = this.state;
+    if (this.state.loading) {
+      return(
+        <div>
+          <h1>loading.....</h1>
+        </div>
+      )
+    }
     return (
 
       <div className={classes.container}>
@@ -129,16 +197,17 @@ class AddCurrency extends React.Component {
           <div className={classes.content}>
           {/* <div style={{height: window.innerHeight}}> */}
           {this.state.data.map(d =>
-          <Slide direction="up" in={checked} mountOnEnter unmountOnExit> 
-            <CardContainer
-                value={this.keyExtractor} 
-                category={d.category} 
-                  currency={d.name}
-                  rate={d.rate} 
-                  buttonTxt="Update" 
-                  onClick={this.handleClickOpenUpdate}/>
-          
-          </Slide>)}
+                // <Slide direction="up" in={checked} mountOnEnter unmountOnExit> 
+                  <CardContainer
+                      value={d.id} 
+                      category={d.category} 
+                      currency={d.base}
+                      rate={d.rates} 
+                      buttonTxt="Update" 
+                      onClick={this.handleClickOpenUpdate}/>
+                // </Slide>
+              )
+          }
           {/* </div> */}
           </div>
         </div>
@@ -165,5 +234,45 @@ AddCurrency.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles) (AddCurrency)
+const queryAllCurrencies = gql`
+  query{
+    allCurrencies(orderBy: createdAt_DESC){
+      id
+      base
+      category
+      rates
+      user{
+        id
+      }
+    }
+  }
+`
+
+const addCurrencyMutation = gql`
+  mutation(
+    $base: String!, 
+    $category: String!,
+    $rates: String!,
+    $userId: ID!){
+    createCurrency(
+      base: $base, 
+      category: $category, 
+      rates: $rates, 
+      userId: $userId){
+      id
+      base
+      category
+      rates
+      user{
+        id
+      }
+    }
+  }
+`
+
+const Dashboard = withStyles(styles) (AddCurrency)
+export default compose(
+                  graphql(addCurrencyMutation, {name: 'createCurrencyMutation'}),
+                  graphql(queryAllCurrencies, {name: 'allCurrencies'})
+                )(withApollo(Dashboard))
 // export default Dashboard
