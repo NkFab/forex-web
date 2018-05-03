@@ -265,6 +265,7 @@ class SignUp extends Component {
                                             <p>I agree to the terms and conditions.</p>
                                         </div>
                                     </div>
+                                    <br />
                                     {/* <CardActions> */}
                                     {/* <Button fullWidth onClick={this.handleSignup} size="small" variant="raised" color="primary">Sign Up</Button> */}
                                     <Button

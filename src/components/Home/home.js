@@ -15,6 +15,12 @@ import { FormLabel, InputLabel } from 'material-ui/Form'
 import { PermIdentity } from '@material-ui/icons'
 import MenuIcon from '@material-ui/icons/Menu';
 import './homestyles.css'
+import './bootstrap-grid.css'
+import './bootstrap-grid.min.css'
+import './bootstrap-reboot.css'
+import './bootstrap-reboot.min.css'
+import './bootstrap.css'
+import './bootstrap.min.css'
 import note from '../../assets/note.png'
 import exchange from '../../assets/money-exchange.png'
 import uprates from '../../assets/currency-rates.png'
@@ -76,6 +82,7 @@ class Home extends Component {
                                             horizontal: 'right',
                                         }}
                                         open={open}
+                                        color="primary"
                                     >
                                         <Link to="login" style={{ textDecoration: 'none' }}>
                                             <MenuItem>Login</MenuItem>
@@ -85,7 +92,7 @@ class Home extends Component {
                                         </Link>
                                     </Menu>
                                     <IconButton color="inherit-">
-                                        <MenuIcon />
+                                        <MenuIcon color="secondary" />
                                     </IconButton>
                                 </div>
                             )}
@@ -105,33 +112,30 @@ class Home extends Component {
                 </div>
                 <div id="features" className="features container-fluid">
                     <div className="row">
-                        <br /><br />
-                        <br /><br />
                         <div className="col-lg-12"><h1>Features</h1></div>
-                        <br /><br />
-                        <br /><br />
-                        <div className="col-sm-3">
+                        <div></div>
+                        <div className="col-lg-3 col-md-6 col-xs-12">
                             <img src={note} />
                             <br />
                             <h3>Register</h3>
                             <p>Register your forex bureau to make it discoverable on the map whenever
                         a client is in search of the nearest office.</p>
                         </div>
-                        <div className="col-sm-3">
+                        <div className="col-lg-3 col-md-6 col-xs-12">
                             <img src={exchange} />
                             <br />
                             <h3>Rates</h3>
                             <p>Post your exchange rates to help us compare your rates to
                         other forex bureax' rates.</p>
                         </div>
-                        <div className="col-sm-3">
+                        <div className="col-lg-3 col-md-6 col-xs-12">
                             <img src={uprates} />
                             <br />
                             <h3>Update</h3>
                             <p>Continue to update your currency exchange rates as they change to
                          give out accurate information.</p>
                         </div>
-                        <div className="col-sm-3">
+                        <div className="col-lg-3 col-md-6 col-xs-12">
                             <img src={dash} />
                             <br />
                             <h3>Dashboard</h3>
@@ -140,59 +144,86 @@ class Home extends Component {
                         </div>
                     </div>
                 </div>
-                <div id="about" className="about">
-                    <br /><br />
-                    <h1>About</h1>
-                    <p>forext was designed by the developing team from Limiteless apps
-                    which is part of the Limitless agency group.
-                    </p>
-                    <h3>What we beleive in</h3>
-                    <p>" If you make a product good enough, even though you live in the depths
-                    of the forest the public will make a path to your door. But if you want the
+                <div id="about" className="about container-fluid">
+                    <div className="row">
+                        <div className="col-12">
+                            <h1>About</h1>
+                            <p>forext was designed by the developing team from Limiteless apps
+                            which is part of the Limitless agency group.
+                            </p>
+                            <h3>What we beleive in</h3>
+                            <p>" If you make a product good enough, even though you live in the depths
+                            of the forest the public will make a path to your door. But if you want the
                     public in sufficient numbers, you would better construct a highway " William Randolph</p>
-                    <h3>Mission</h3>
-                    <br />
-                    <h3>Vision</h3>
+                            <h3>Mission</h3>
+                            <br />
+                            <h3>Vision</h3>
+                        </div>
+                    </div>
                 </div>
                 <div id="contact" className="contact container-fluid">
-                    <br /><br />
-                    <h1>Contact</h1>
-                    <div className="col-lg-4 col-md-6 col-sm-6">
-                        <h4>Get in touch</h4>
-                        <div><img src={loc} height="32" width="32" /></div>
-                        <br />
-                        <div className="inline"><img src={phone} height="32" width="32" /> <p>+250 789 906 300</p></div>
-                        <br />
-                        <div><img src={email} height="32" width="32" /></div>
+                    <div className="row">
+                        <div className="col-lg-12"><h1>Contact</h1></div>
+                        <br /><br />
+                        <div className="col-lg-6 col-md-4 col-xs-12">
+                            <h4>Get in touch</h4>
+                            <ul className="intouch">
+                                <br />
+                                <li><img src={loc} height="32" width="32" /> 21 KG 670 Street, Kimihurura, Kigali</li>
+                                <br />
+                                <li><img src={phone} height="32" width="32" /> +250 789 906 300</li>
+                                <br />
+                                <li><img src={email} height="32" width="32" /> Limitlessagency250@gmail.com </li>
+                            </ul>
+                        </div>
+                        <div className="col-lg-6 col-md-4 col-xs-12">
+                            <h4>Your feedback is of value</h4>
+                            <form validate autoComplete="off">
+                                <TextField
+                                    id="with-placeholder"
+                                    label="Names"
+                                    placeholder="Names"
+                                    fullWidth
+                                    required
+                                // value={this.state.email}
+                                // onChange={e => this.setState({ email: e.target.value })}
+                                />
+                                <br /><br />
+                                <TextField
+                                    id="with-placeholder"
+                                    label="Email"
+                                    placeholder="Email"
+                                    fullWidth
+                                    required
+                                />
+                                <br /><br />
+                                <TextField
+                                    id="with-placeholder"
+                                    label="Message"
+                                    placeholder="Your message here..."
+                                    multiline
+                                    rows={5}
+                                    fullWidth
+                                    required
+                                />
+                                <br /><br />
+                                <Button
+                                    fullWidth
+                                    variant="raised"
+                                    color="primary"
+                                    type="submit"
+                                >
+                                    SEND
+                                </Button>
+                            </form>
+                        </div>
                     </div>
-                    <div className="col-lg-8 col-md-6 col-md-6">
-                        <h4>Your feedback is of value</h4>
-                        <form validate autoComplete="off">
-                            <TextField
-                                id="with-placeholder"
-                                label="Names"
-                                placeholder="Names"
-                                fullWidth
-                            // value={this.state.email}
-                            // onChange={e => this.setState({ email: e.target.value })}
-                            />
-                            <br /><br />
-                            <TextField
-                                id="with-placeholder"
-                                label="Email"
-                                placeholder="Email"
-                                fullWidth
-                            />
-                            <br /><br />
-                            <TextField
-                                id="with-placeholder"
-                                label="Message"
-                                placeholder="Your message here..."
-                                multiline
-                                rows={5}
-                                fullWidth
-                            />
-                        </form>
+                </div>
+                <div className="footer">
+                    <div className="row">
+                        <div className="col-12">
+                            <h6>© Copyright Limitless apps 2018</h6>
+                        </div>
                     </div>
                 </div>
             </div>
