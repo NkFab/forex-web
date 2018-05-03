@@ -58,8 +58,8 @@ class SignUp extends Component {
     }
     componentWillReceiveProps(nextProps) {
         this.setState({
-            latitude: nextProps.coords.latitude.toString(),
-            longitude: nextProps.coords.longitude.toString()
+            // latitude: nextProps.coords.latitude.toString(),
+            // longitude: nextProps.coords.longitude.toString()
         })
     }
     componentWillMount() {

@@ -1,34 +1,33 @@
 const ScreenHeight= window.innerHeight
 const ScreenWidth= window.innerWidth
 const styles = theme => ({
-    container: {
-        display: 'flex',
-        flexDirection: 'row wrap',
-        // padding: 20,
-        width: '100%',
-        backgroundColor: '#E5E8E8'
-    },
-    wrapper:{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-        // marginLeft: 300
-    },
     content:{
-        display: 'flex',
+        // display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 100,
+        // marginTop: 100,
+        backgroundColor: 'white',
         width: ScreenWidth/2,
-        height: ScreenHeight /3
+        height: ScreenHeight /3,
+        elevation: 20,
+        boxShadow: 20,
+    },
+    formContainer:{
+      display: 'flex',
+      flexWrap: 'wrap',
+      alignItems: 'center',
+      // padding: 50,
+    },
+    containerBtn:{
+      marginLeft: ScreenWidth /2.5,
+      marginTop: -25,
     },
     title:{
         fontSize: 20,
         color:'#006442',
         fontWeight: 'bold',
         marginTop: 70,
-        marginLeft: -90,
+        // marginLeft: -90,
     },
     category:{
       marginTop: 20,
@@ -81,17 +80,15 @@ const styles = theme => ({
      },
       textField:{
         width: ScreenWidth/10,
-          marginRight: 150,
+        marginLeft: 70,
           // marginTop: -25,
       },
       textFieldSelect:{
         marginLeft: 170,
-        marginTop: 33,
+        marginTop: 53,
       },
       btnAdd:{
         backgroundColor: '#640022',
-        marginLeft: ScreenWidth /2.5,
-        marginTop: -45,
         '&:hover, &$focusVisible': {
           color: '#640022',
       }

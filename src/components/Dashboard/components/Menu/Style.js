@@ -13,13 +13,11 @@ const styles = theme => ({
     container: {
         display: 'flex',
         flexDirection: 'column',
-        overflow: 'hidden',
-        // height: ScreenHeight,
         width: ScreenWidth/4.5,
+        height: '100vh',
         backgroundColor: '#008b5c',
         color:'white',
-        justify: 'center',
-        align: 'center'
+        alignItems: 'center'
     },
     avatar: {
         justify: 'center',
@@ -27,22 +25,18 @@ const styles = theme => ({
         width: 60,
         height: 60,
         marginTop: 50,
-        marginLeft: 115,
+        // marginLeft: 115,
       },
     wrapper:{
         // marginTop: 100
-    },
-    content:{
-        // flexGrow: 1,
-        marginTop: 35,
-        marginLeft: 5,
     },
     button:{
         backgroundColor: '#006442',
         width: 300,
         color: 'white',
         fontWeight: 'bold',
-        paddingRight: 20,
+        alignItems: 'center',
+        justifyContent: 'center',
         marginTop: 20,
     }
     
