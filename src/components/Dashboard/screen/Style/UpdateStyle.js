@@ -2,57 +2,43 @@ const ScreenHeight= window.outerHeight
 const ScreenWidth= window.outerWidth
 const styles = theme => ({
     container: {
-        display: 'flex',
-        // // // // position: 'fixed',
-        flexDirection: 'row wrap',
+        // display: 'flex',
+        // position: 'relative',
+        // flexDirection: 'row wrap',
+        // alignItems: 'center',
         // width: '100%',
         minHeight: '100vh',
         // marginTop: 0,
         backgroundColor: '#E5E8E8',
         backgroundSize: 'cover',
-        alignItems: 'center',
+        // alignItems: 'center',
     },
     left:{
-        display: 'flex',
-        // position: 'fixed',
-        minHeight: '100vh',
-        // width: ScreenWidth/2
-      },
-    signup:{
-        display: 'flex',
-        // height: '100%',
-        // width: '100%',
-        // overflow: 'hidden',
-        // background: '#40926d',
-        // marginTop: '0%',
+      display: 'flex',
+      position: 'fixed',
+      minHeight: '100vh',
+      // width: ScreenWidth/2
     },
-    card:{
-        width: ScreenWidth /4,
-        height: ScreenHeight /4
-        // margin: '7% 27% 2% 27%',
-        // padding: '5%',
-        // overflow: 'scroll',
-        /* box-sizing: content-box; */
+    wrapper:{
+      marginTop: '4%',
+      marginLeft: '25%',
+      // display: 'flex',
+      alignItems: 'center',
+      // flexDirection: 'column',
+      // right: 0,
+      // marginLeft: ScreenWidth/2.8,
+      // overflow: 'scroll',
     },
-    // left:{
-    //     float: 'left'
-    // },
-    // right:{
-    //     float: 'right'
-    // },
-    btn:{
-        flex: 1,
-        float: 'left',
-        marginTop: '2%',
-        width: '100%'
+    formContainer:{
+      display: 'flex',
+      backgroundColor: 'white',
+      marginTop: '2%',
+      alignItems: 'center',
+      justifyContent: 'center',
+      zIndex: 1
     },
-    timepickers:{
-        width: '200px'
-    },
-    agree:{
-        display: 'inline-flex'
-    },
-    formContent:{
-        display: 'flex'
-    },
-})
+    
+  });
+  
+
+export default styles
