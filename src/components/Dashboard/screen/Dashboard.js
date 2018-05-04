@@ -19,7 +19,7 @@ import DialogBox from '../components/DialogBox/DialogBox'
 import CardContainer from '../components/Card/CardContainer'
 import MenuCard from '../components/Menu/MenuCard'
 import Header from '../components/Header/Header'
-import styles from './Style'
+import styles from './Style/DashStyle'
 
 const myCurriencies = []
 
@@ -102,17 +102,14 @@ class AddCurrency extends React.Component {
     const { checked } = this.state;
     return (
 
-      <div className={classes.container}>
-
-        <MenuCard onClick={this.handleClickOpen}/>
-
-        {/* <SaveButton onClick= {()=> alert('Save button Clicked')}/> */}
-
-        <div className={classes.wrapper}>
-
+      <Grid container className={classes.container} spacing={16}>
+        <Grid item className={classes.left} xs>
+          <MenuCard onClick={this.handleClickOpen}/>
+        </Grid>
+        <Grid item className={classes.wrapper} xs>
           <Header />
           <div className={classes.formContainer}>
-          <Form 
+           <Form 
               onChangeSelect ={this.handleChange('name')}
               onValueSelect ={this.state.name}
               onChangeInput ={this.handleRate}
@@ -127,36 +124,74 @@ class AddCurrency extends React.Component {
           </Form>
           </div>
           <div className={classes.content}>
-          {/* <div style={{height: window.innerHeight}}> */}
           {this.state.data.map(d =>
-          <Slide direction="up" in={checked} mountOnEnter unmountOnExit> 
-            <CardContainer
-                value={this.keyExtractor} 
-                category={d.category} 
-                  currency={d.name}
-                  rate={d.rate} 
-                  buttonTxt="Update" 
-                  onClick={this.handleClickOpenUpdate}/>
-          
-          </Slide>)}
-          {/* </div> */}
+            <Slide direction="up" in={checked} mountOnEnter unmountOnExit> 
+              <CardContainer
+                  value={this.keyExtractor} 
+                  category={d.category} 
+                    currency={d.name}
+                    rate={d.rate} 
+                    buttonTxt="Update" 
+                    onClick={this.handleClickOpenUpdate}/>
+            
+            </Slide>)}
           </div>
-        </div>
-        <Dialog
-          open={this.state.openUpdate}
-          onClose={this.handleCloseUpdate}
-          aria-labelledby="form-dialog-title"
-        >
-          <DialogBox 
-              title="Update Currency" 
-              description="Update the currency that selected"
-              buttonTxt="Update"
-              buttonTxt2="Cancel"
-              onClick={this.handleCloseUpdate}
-              onClickCancel={this.handleCloseUpdate}
-          />
-        </Dialog>
-      </div>
+        </Grid>
+      </Grid>  
+
+      // <div className={classes.container}>
+      //   <div className={classes.left}>
+      //     <MenuCard onClick={this.handleClickOpen}/>
+      //   </div>
+      //   <div className={classes.wrapper}>
+
+      //     <Header />
+      //     <div className={classes.formContainer}>
+      //     <Form 
+      //         onChangeSelect ={this.handleChange('name')}
+      //         onValueSelect ={this.state.name}
+      //         onChangeInput ={this.handleRate}
+      //         onClickAdd ={this.handleAnimation}
+      //         onClickBuy ={this.handleBuy}
+      //         onClickSell ={this.handleSell}>
+      //       {this.state.currencies.map(value => (
+      //                           <MenuItem key={this.keyExtractor} value={value.currency}>
+      //                           {value.currency}
+      //                           </MenuItem>
+      //                       ))}
+      //     </Form>
+      //     </div>
+      //     <div className={classes.content}>
+      //     {/* <div style={{height: window.innerHeight}}> */}
+      //     {this.state.data.map(d =>
+      //     <Slide direction="up" in={checked} mountOnEnter unmountOnExit> 
+      //       <CardContainer
+      //           value={this.keyExtractor} 
+      //           category={d.category} 
+      //             currency={d.name}
+      //             rate={d.rate} 
+      //             buttonTxt="Update" 
+      //             onClick={this.handleClickOpenUpdate}/>
+          
+      //     </Slide>)}
+      //     {/* </div> */}
+      //     </div>
+      //   </div>
+      //   <Dialog
+      //     open={this.state.openUpdate}
+      //     onClose={this.handleCloseUpdate}
+      //     aria-labelledby="form-dialog-title"
+      //   >
+      //     <DialogBox 
+      //         title="Update Currency" 
+      //         description="Update the currency that selected"
+      //         buttonTxt="Update"
+      //         buttonTxt2="Cancel"
+      //         onClick={this.handleCloseUpdate}
+      //         onClickCancel={this.handleCloseUpdate}
+      //     />
+      //   </Dialog>
+      // </div>
     );
   }
 }

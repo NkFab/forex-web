@@ -10,6 +10,7 @@ import Home from './components/Home/home'
 import Login from './components/Login/login'
 import SignUp from './components/SignUp/signup'
 import Dashboard from './components/Dashboard/screen/Dashboard'
+import UpdateInfo from './components/Dashboard/screen/UpdateInfo'
 // import SimpleFormExample from './components/tests/test'
 import { createMuiTheme } from 'material-ui/styles';
 
@@ -47,7 +48,7 @@ class App extends Component {
             <Route path="/login" component={Login} />
             <Route path="/signup" component={SignUp} />
             <Route path="/dashboard" component={Dashboard} />
-            {/* <Route path="/tests" component={SimpleFormExample} /> */}
+            <Route path="/bureau_information_update" component={UpdateInfo} />
           </div>
         </Router>
         </MuiThemeProvider>

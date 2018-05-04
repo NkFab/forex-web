@@ -9,6 +9,8 @@ import Button from 'material-ui/Button';
 import TextField from 'material-ui/TextField';
 import MenuItem from 'material-ui/Menu/MenuItem';
 import Grid from 'material-ui/Grid';
+import Radio, { RadioGroup } from 'material-ui/Radio';
+import { FormLabel, FormControl, FormControlLabel, FormHelperText } from 'material-ui/Form';
 
 import styles from './style'
 
@@ -22,11 +24,9 @@ class AddCurrencyForm extends React.Component {
 
     return (
 
-        <Paper 
-            elevation={4}
-            className={classes.content}>
-              <Grid container spacing={16}>
-              <Grid item xs={12} className={classes.category}>
+              <div 
+              className={classes.content}>
+              <div className={classes.category}>
               <Paper 
                 className={classes.categoryBtn} 
                 elevation={0}>
@@ -43,8 +43,9 @@ class AddCurrencyForm extends React.Component {
                     Sell
                 </Button>
                 </Paper>
-                </Grid>
-                <Grid item xs={12} sm={6}>
+                </div>
+                <div className={classes.formContainer}>
+                <div>
                     <TextField
                             id="select-currency"
                             select
@@ -62,8 +63,8 @@ class AddCurrencyForm extends React.Component {
                             >
                         {this.props.children}
                     </TextField>
-                </Grid>
-                <Grid item xs={12} sm={6}>
+                </div>
+                <div>
                 <TextField
                     id="rates"
                     label="Rates eg: 892"
@@ -72,26 +73,26 @@ class AddCurrencyForm extends React.Component {
                     margin="normal"
                     onChange={onChangeInput}
                   />
-                </Grid>
-                <Grid item xs={12}>
+                </div>
+                </div>
+                <div className={classes.containerBtn}>
                   <Button variant="fab"  className={classes.btnAdd} onClick={onClickAdd}>
                     <SvgIcon 
                         style={{color: 'white', fontSize: 30}}>
                       <path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
                     </SvgIcon>
                   </Button>
-                </Grid>
-                </Grid>
-            </Paper>
+                </div>
+                </div>
     );
   }
 }
 
 AddCurrencyForm.propTypes = {
   classes: PropTypes.object.isRequired,
-  onChangeSelect: PropTypes.string.isRequired,
+  onChangeSelect: PropTypes.func.isRequired,
   onValueSelect: PropTypes.any,
-  onChangeInput: PropTypes.string.isRequired,
+  onChangeInput: PropTypes.func.isRequired,
   onClickAdd: PropTypes.func.isRequired,
   onClickBuy: PropTypes.func.isRequired,
   onClickSell: PropTypes.func.isRequired,

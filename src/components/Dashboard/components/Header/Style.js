@@ -5,7 +5,7 @@ const ScreenWidth= window.innerWidth
 
 const style = {
     appBar: {
-      display: 'flex',
+      // display: 'flex',
       left: 303,
       // overflow: 'hidden',
       height: 50,

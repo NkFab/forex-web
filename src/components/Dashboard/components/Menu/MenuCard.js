@@ -14,7 +14,7 @@ class Menu extends React.Component {
     const { classes, onClick } = this.props;
 
     return (
-      <div className={classes.bigContainer}>
+      
           <Paper
               rounded= {false}
               className={classes.container}
@@ -39,7 +39,7 @@ class Menu extends React.Component {
               Profil
             </Button>
           </Paper>
-        </div>
+        // </div>
       );
   }
 }
