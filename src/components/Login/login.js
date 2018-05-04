@@ -18,12 +18,20 @@ import './loginstyles.css'
 class Login extends Component {
     state = {
         email: '',
-        password: '',
-    }
-    handleLogin = async () => {
-        const { email, password } = this.state
-        await this.props.LoginUserMutation({ variables: { email, password } })
-        this.props.history.replace('/')
+        password:'',
+      }
+      handleLogin = async () => {
+        const {email,password} = this.state
+        let response
+        try{
+            response =  await this.props.LoginUserMutation({variables: {email,password}})
+            this.props.history.replace('/')
+            console.log(response)
+        }
+       catch(err){
+        console.log(err)
+        alert('error occured')
+       }
 
     }
     render() {
