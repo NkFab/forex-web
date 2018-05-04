@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'; 
+import PropTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom'
 import {
     TextValidator,
@@ -85,12 +85,12 @@ class SignUp extends Component {
     }
 
 
-      handleSignup = async () => {
-        const {user:{email,phone,phoneopt,companyName,password,address,openat,closedat,workdays},latitude,longitude} = this.state
-        await this.props.CreateUserMutation({variables: {email,phone,phoneopt,companyName,password,address,openat,closedat,workdays,latitude,longitude}})
+    handleSignup = async () => {
+        const { user: { email, phone, phoneopt, companyName, password, address, openat, closedat, workdays }, latitude, longitude } = this.state
+        await this.props.CreateUserMutation({ variables: { email, phone, phoneopt, companyName, password, address, openat, closedat, workdays, latitude, longitude } })
         alert('Thank you for Sign up')
         this.props.history.replace('/dashboard')
-      }
+    }
 
     render() {
         const { user, submitted } = this.state;
@@ -127,6 +127,7 @@ class SignUp extends Component {
                                             errorMessages={['this field is required', 'The email is invalid']}
                                             value={user.email}
                                             onChange={this.handleChange}
+                                            required
                                         />
                                         <br /><br />
                                         <TextValidator
@@ -139,6 +140,7 @@ class SignUp extends Component {
                                             validators={['required']}
                                             errorMessages={['this field is required']}
                                             value={user.password}
+                                            required
                                         />
                                         <br /><br />
                                         <TextValidator
@@ -151,6 +153,7 @@ class SignUp extends Component {
                                             validators={['isPasswordMatch', 'required']}
                                             errorMessages={['password mismatch', 'this field is required']}
                                             value={user.repeatPassword}
+                                            required
                                         />
                                         <br /><br />
                                         <TextValidator
@@ -162,6 +165,7 @@ class SignUp extends Component {
                                             validators={['required']}
                                             errorMessages={['this field is required']}
                                             value={user.companyName}
+                                            required
                                         />
                                         <br /><br />
                                         <TextValidator
@@ -173,6 +177,7 @@ class SignUp extends Component {
                                             validators={['required']}
                                             errorMessages={['this field is required']}
                                             value={user.address}
+                                            required
                                         />
                                         <br /><br />
                                     </div>
@@ -186,6 +191,7 @@ class SignUp extends Component {
                                             validators={['required']}
                                             errorMessages={['this field is required']}
                                             value={user.phone}
+                                            required
                                         />
                                         <br /><br />
                                         <TextValidator
@@ -214,6 +220,7 @@ class SignUp extends Component {
                                             errorsMessages={['this field is required']}
                                             onChange={this.handleChange}
                                             className="timepickers"
+                                            required
                                         />
                                         <br /><br />
                                         <TextValidator
@@ -233,6 +240,7 @@ class SignUp extends Component {
                                             errorsMessages={['this field is required']}
                                             onChange={this.handleChange}
                                             className="timepickers"
+                                            required
                                         />
                                         <br /><br />
                                         <FormControl component="fieldset" required>
@@ -242,6 +250,7 @@ class SignUp extends Component {
                                                 name="workdays"
                                                 value={user.workdays}
                                                 onChange={this.handleChange}
+                                                required
                                             >
                                                 <FormControlLabel value="5/7" control={<Radio color="primary" />} label="5/7" />
                                                 <FormControlLabel value="7/7" control={<Radio color="primary" />} label="7/7" />
@@ -258,13 +267,15 @@ class SignUp extends Component {
                                                 onChange={this.handleChange}
                                                 value="agree"
                                                 color="primary"
+                                                required
                                             />
                                         </div>
                                         <div>
                                             <p>I agree to the terms and conditions.</p>
                                         </div>
                                     </div>
-                                  <Button
+                                    <br />
+                                    <Button
                                         onClick={this.handleSignup}
                                         fullWidth
                                         variant="raised"
