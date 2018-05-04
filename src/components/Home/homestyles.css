@@ -1,216 +1,133 @@
-
-.root{
+.root {
 	flex-grow: 1;
 }
-.flex{
+
+.flex {
 	flex: 1;
 }
-.getbutton{
-    background: white;
-    color: #006442;
+
+.getbutton {
+	background: white;
+	color: #006442;
 }
-.home{
-    height: 100vh;
-    padding-top: 190px;
-    text-align: center;
-    background: rgb(0,100,66, 0.90);
-    color: white;
-    overflow: hidden;
+
+.home {
+	height: 100vh;
+	padding-top: 200px;
+	background: /* top, transparent red, faked with gradient */
+	linear-gradient( rgba(0, 57, 27, 0.95), rgba(0, 57, 27, 0.95)), url("../../assets/cover.jpg") no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	text-align: center;
+	/* background: rgb(0,100,66, 0.90); */
+	color: white;
+	/* overflow: hidden; */
 }
-.about{
-    height: 100vh;
+
+.about {
+	height: 100vh;
+	min-height: 100%;
+	width: 100%;
 	/* background-color: rgb(25,126,92,0.9);
 	background-image: url("../../assets/bg2.jpg") no-repeat center center fixed; */
-	background: 
-    /* top, transparent red, faked with gradient */ 
-    linear-gradient(
-      rgba(25,126,92,0.95), 
-      rgba(25,126,92,0.95)
-    ), url("../../assets/bg2.jpg") no-repeat center center fixed;
+	background: /* top, transparent red, faked with gradient */
+	linear-gradient( rgba(25, 126, 92, 0.95), rgba(25, 126, 92, 0.95)), url("../../assets/bg2.jpg") no-repeat center center fixed;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
 	background-size: cover;
 	text-align: center;
 	color: white;
-	padding: 5% 10% 0% 10%;
-    margin-top: 0%;
-    overflow: hidden;
+	padding: 60px 0px;
+	margin-top: 0%;
+	/* overflow: hidden; */
 }
-.features{
-	height: 100vh;
-	padding: 5% 10% 0% 10%;
+
+.features {
+	/* height: 100vh;
 	text-align: center;
-    background: #005364;
-    margin-top: 0%;
-	overflow: hidden;
+	background: #005364;
+	margin-top: 0%;
 	color: white;
-}
-.contact{
-	height: 100vh;
-	padding: 5% 10% 0% 10%;
+	/* padding-top: 10%; */
+	/* overflow-y: auto;
+	word-wrap: normal;  */
 	text-align: center;
-    background: #534741;
-    margin-top: 0%;
-	overflow: hidden;
+	background: #005364;
+	margin-top: 0%;
 	color: white;
+	display: table;
+	width: 100%;
+	height: 100vh;
+	min-height: 100%;
+	padding: 60px 0px;
 }
-.register{
-	float: left;
-	margin-left: 2%;
-	padding: 2%;
-	width: 12%;
+
+.contact {
+	height: 90vh;
+	width: 100%;
+	min-height: 100%;
+	text-align: center;
+	background: #fff;
+	margin-top: 0%;
+	padding: 60px 0px;
+	color: #006442;
 }
-.exrates{
+
+.exrates {
 	float: left;
-	padding: 2%;
 	margin-left: 10%;
-	width: 12%;
+	width: 15%;
 }
-.update{
+
+.update {
 	float: left;
-	padding: 2%;
 	margin-left: 10%;
-	width: 12%;
+	width: 15%;
 }
-.dashb{
+
+.dashb {
 	float: left;
-	padding: 2%;
 	margin-left: 10%;
-	width: 12%;
-}
-/* .dot{
-	margin: auto auto;
-	width: 300px;
-	height: 300px;
-	position: relative;
+	width: 15%;
 }
 
-
-.centraldot{
-	width: 6px;
-	height: 6px;
-	background: rgba(32,150,243,1);
-	border-radius: 30px;
-	position: absolute;
-	left:147px;
-	top:147px;
-	animation: animationDotCentral linear 3s;
-  transform-origin: 50% 50%;
-  animation-fill-mode:forwards;
-  animation-iteration-count: infinite;
+.intouch {
+	list-style: none;
+	text-align: left;
+	font-size: 16pt;
 }
 
-
-.wave{
-	width: 260px;
-	height: 260px;
-	background: rgba(32,150,243,0.4);
-	border-radius: 200px;
-	position: absolute;
-	left:20px;
-	top:20px;
-	opacity: 0;
-	animation: animationWave cubic-bezier(0,.54,.53,1) 3s;
-  transform-origin: 50% 50%;
-  animation-fill-mode:forwards;
-  animation-delay:0.9s;
-  animation-iteration-count: infinite;
+.contactus {
+	float: right;
+	/* width: 60%; */
 }
 
-.wave2{
-	width: 260px;
-	height: 260px;
-	background: rgba(32,150,243,0.4);
-	border-radius: 200px;
-	position: absolute;
-	left:20px;
-	top:20px;
-	opacity: 0;
-	animation: animationWave cubic-bezier(0,.54,.53,1) 3s;
-  transform-origin: 50% 50%;
-  animation-fill-mode:forwards;
-  animation-delay:1.07s;
-  animation-iteration-count: infinite;
+.inline {
+	float: left;
 }
 
-
-@keyframes animationDotCentral{
-	
-	0% {
-		transform:  scale(0) ;
-		opacity: 0;
-	}
- 
-	5% {
-		transform:  scale(2) ;
-	}
-  
-	10% {
-		transform:  scale(0.90) ;
-		opacity: 1;
-	}
-
-
-	11% {
-		transform:  scale(1.50) ;
-	}
-
-	12% {
-		transform:  scale(1.00) ;
-	}
- 
-	28% {
-		background: rgba(32,150,243,1);
-	}
-  
-	29% {
-		background: rgba(255,255,255,1);
-	}
-
-	31% {
-		background: rgba(32,150,243,1);
-	}
-
-	33% {
-		background: rgba(255,255,255,1);
-	}
-
-	35% {
-		background: rgba(32,150,243,1);
-	}
-
-	90%{
-		opacity: 1;
-	}
-
-	100% {
-		opacity: 0;
-	}
+.left {
+	float: left;
 }
 
-@keyframes animationWave{
-	0% {
-	    opacity: 0;
-	    transform:  scale(0.00);
-	}
-
-	1% {
-		opacity: 1;
-	}
-
-	10% {
-		background: rgba(32,150,243,0.4);
-	}
-
-	100% {
-	 	transform:  scale(1) ;
-	 	background: rgba(32,150,243,0.0);
-	 }
+.right {
+	float: right;
 }
 
- */
+.pad {
+	padding: 2%;
+}
 
-
-
-
+.footer {
+	height: 10vh;
+	min-width: 10vh;
+	width: 100%;
+	text-align: center;
+	background: whitesmoke;
+	padding-top: 20px;
+	margin: 0;
+	bottom: 0;
+}

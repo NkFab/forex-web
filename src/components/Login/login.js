@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link,withRouter } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { ReactDOM } from 'react-dom';
 import { graphql } from 'react-apollo';
 import gql from 'graphql-tag';
@@ -33,7 +33,7 @@ class Login extends Component {
         alert('error occured')
        }
 
-      }
+    }
     render() {
         return (
             <div>
@@ -45,7 +45,7 @@ class Login extends Component {
                     </Toolbar>
                 </AppBar>
                 <div className="login" color="primary">
-                    <div>
+                    <div className="root">
                         <Card className="cardl">
                             <CardContent>
                                 <Typography variant="headline" component="h2">
@@ -57,22 +57,32 @@ class Login extends Component {
                                         label="Email"
                                         placeholder="Email"
                                         value={this.state.email}
-                                        onChange={e => this.setState({email: e.target.value})}
+                                        onChange={e => this.setState({ email: e.target.value })}
+                                        required
                                     />
                                     <br />
                                     <TextField
                                         id="password-input"
                                         label="Password"
                                         value={this.state.password}
-                                        onChange={e => this.setState({password: e.target.value})}
+                                        onChange={e => this.setState({ password: e.target.value })}
                                         type="password"
                                         autoComplete="current-password"
-                                        // margin="normal"
+                                        required
+                                    // margin="normal"
                                     />
                                 </form>
                             </CardContent>
                             <CardActions>
-                                <Button onClick={this.handleLogin} size="small" variant="raised" color="primary">Login</Button>
+                                <Button
+                                    onClick={this.handleLogin}
+                                    size="small"
+                                    variant="raised"
+                                    color="primary"
+                                    fullwidth
+                                >
+                                    Login
+                                </Button>
                             </CardActions>
                         </Card>
                     </div>
@@ -92,5 +102,5 @@ const loginMutation = gql`
     }
   }
 `;
-const LoginPageWithMutation = graphql(loginMutation, {name: 'LoginUserMutation'})(Login)
+const LoginPageWithMutation = graphql(loginMutation, { name: 'LoginUserMutation' })(Login)
 export default withRouter(LoginPageWithMutation)
